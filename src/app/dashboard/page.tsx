@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { BusinessForm, BusinessFormValues } from "@/components/dashboard/business-form";
 import { LivePreview } from "@/components/dashboard/live-preview";
 import { MediaUploader } from "@/components/dashboard/media-uploader";
@@ -27,13 +26,27 @@ const defaults: BusinessFormValues = {
   accent_color: "#16A34A"
 };
 
+function getTemplateFromQuery() {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const templateId = params.get("template") || "";
+  if (!templateId) {
+    return null;
+  }
+
+  return getTemplateById(templateId);
+}
+
 export default function DashboardPage() {
-  const searchParams = useSearchParams();
-  const templateId = searchParams.get("template") || "";
-  const templateFromUrl = templateId ? getTemplateById(templateId) : null;
-  const [values, setValues] = useState<BusinessFormValues>(templateFromUrl?.defaultValues ?? defaults);
+  const [values, setValues] = useState<BusinessFormValues>(() => getTemplateFromQuery()?.defaultValues ?? defaults);
   const [userId, setUserId] = useState("");
-  const [message, setMessage] = useState(templateFromUrl ? `Template applied: ${templateFromUrl.name}` : "");
+  const [message, setMessage] = useState(() => {
+    const template = getTemplateFromQuery();
+    return template ? `Template applied: ${template.name}` : "";
+  });
   const [businessId, setBusinessId] = useState<string | null>(null);
 
   async function loadExistingBusiness() {
