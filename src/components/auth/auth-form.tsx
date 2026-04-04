@@ -54,7 +54,8 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       }
 
       if (mode === "login") {
-        router.push("/dashboard");
+        const nextPath = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("next") : null;
+        router.push(nextPath || "/dashboard");
         return;
       }
 

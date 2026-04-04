@@ -1,5 +1,5 @@
 import { PLAN_LIMITS, type FeatureLimits, type PlanType } from "@/lib/pricing";
-import { hasSupabaseEnv, supabaseRest } from "@/lib/supabase";
+import { hasSupabaseEnv, supabaseAuthRequest, supabaseRest } from "@/lib/supabase";
 
 type SubscriptionRecord = {
   id: string;
@@ -16,6 +16,34 @@ export function parseUserIdFromRequest(request: Request) {
   const userId = request.headers.get("x-user-id") || "";
   const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   return uuidRegex.test(userId) ? userId : null;
+}
+
+function getCookieValue(cookieHeader: string, name: string) {
+  return cookieHeader
+    .split(";")
+    .map((item) => item.trim())
+    .find((entry) => entry.startsWith(`${name}=`))
+    ?.split("=")[1];
+}
+
+export async function resolveUserIdFromRequest(request: Request) {
+  const cookieHeader = request.headers.get("cookie") || "";
+  const sessionToken = getCookieValue(cookieHeader, "pagee_session");
+
+  if (sessionToken) {
+    const auth = await supabaseAuthRequest("user", {
+      method: "GET",
+      accessToken: sessionToken
+    });
+
+    const userId = typeof auth.data?.id === "string" ? auth.data.id : "";
+    if (userId) {
+      return userId;
+    }
+  }
+
+  const fromHeader = parseUserIdFromRequest(request);
+  return fromHeader || null;
 }
 
 export function isProEntitlement(subscription?: SubscriptionRecord | null) {

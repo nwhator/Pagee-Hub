@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BusinessForm, BusinessFormValues } from "@/components/dashboard/business-form";
 import { LivePreview } from "@/components/dashboard/live-preview";
 import { MediaUploader } from "@/components/dashboard/media-uploader";
@@ -49,15 +49,39 @@ export default function DashboardPage() {
   });
   const [businessId, setBusinessId] = useState<string | null>(null);
 
-  async function loadExistingBusiness() {
-    if (!userId) {
+  useEffect(() => {
+    async function loadSessionAndBusiness() {
+      const sessionResponse = await fetch("/api/auth/session");
+      const sessionData = await sessionResponse.json();
+
+      const resolvedUserId = typeof sessionData?.user?.id === "string" ? sessionData.user.id : "";
+      if (!resolvedUserId) {
+        setMessage("Please log in to access your dashboard.");
+        window.location.href = "/login?next=/dashboard";
+        return;
+      }
+
+      setUserId(resolvedUserId);
+
+      const response = await fetch("/api/business/me");
+      const data = await response.json();
+
+      if (response.ok && data?.page?.id) {
+        setBusinessId(data.page.id);
+        setMessage((previous) => previous || "Existing page found. Save will update this page.");
+        return;
+      }
+
       setBusinessId(null);
-      setMessage("Enter your user UUID first.");
-      return;
+      setMessage((previous) => previous || "No existing page found. Save will create a new page.");
     }
 
+    void loadSessionAndBusiness();
+  }, []);
+
+  async function loadExistingBusiness() {
     const response = await fetch("/api/business/me", {
-      headers: { "x-user-id": userId }
+      headers: { "Content-Type": "application/json" }
     });
     const data = await response.json();
 
@@ -73,7 +97,7 @@ export default function DashboardPage() {
 
   async function saveBusiness() {
     if (!userId) {
-      setMessage("Enter your user UUID first.");
+      setMessage("Please log in to save your page.");
       return;
     }
 
@@ -83,10 +107,7 @@ export default function DashboardPage() {
 
     const response = await fetch(target, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(userId ? { "x-user-id": userId } : {})
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
 
@@ -129,16 +150,7 @@ export default function DashboardPage() {
         </article>
       </section>
 
-      <section className="surface-card grid gap-3 p-4 sm:grid-cols-[1fr_auto_auto] sm:items-end">
-        <label className="space-y-2 text-sm font-semibold text-slate-700">
-          User ID (UUID)
-          <input
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
-            placeholder="Used for plan limits and ownership"
-            className="w-full rounded-xl bg-slate-100 px-3 py-3"
-          />
-        </label>
+      <section className="surface-card grid gap-3 p-4 sm:grid-cols-[auto_1fr] sm:items-end">
         <button onClick={loadExistingBusiness} className="rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white">
           Load Account Page
         </button>

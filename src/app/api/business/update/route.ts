@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { validateBusiness } from "@/lib/validation";
 import { hasSupabaseEnv, supabaseRest } from "@/lib/supabase";
-import { getFeatureLimitsForUser, parseUserIdFromRequest } from "@/lib/subscription";
+import { getFeatureLimitsForUser, resolveUserIdFromRequest } from "@/lib/subscription";
 
 export async function POST(request: Request) {
   if (!hasSupabaseEnv) {
@@ -13,9 +13,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const userId = parseUserIdFromRequest(request);
+  const userId = await resolveUserIdFromRequest(request);
   if (!userId) {
-    return NextResponse.json({ error: "Missing x-user-id header" }, { status: 400 });
+    return NextResponse.json({ error: "Authentication required" }, { status: 401 });
   }
   const limits = await getFeatureLimitsForUser(userId);
   const { id, ...payload } = parsed.data;

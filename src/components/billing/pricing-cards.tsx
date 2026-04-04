@@ -52,6 +52,25 @@ export function PricingCards() {
     void fetchPricing();
   }, [country]);
 
+  useEffect(() => {
+    async function fetchSession() {
+      const res = await fetch("/api/auth/session");
+      const data = await res.json();
+
+      if (!res.ok || !data?.authenticated || !data?.user?.id) {
+        setUserId("");
+        return;
+      }
+
+      setUserId(String(data.user.id));
+      if (typeof data?.user?.email === "string") {
+        setEmail((previous) => previous || data.user.email);
+      }
+    }
+
+    void fetchSession();
+  }, []);
+
   const localizedCyclePrice = useMemo(() => {
     if (!pricing) return billingCycle === "monthly" ? 10 : 100;
     return billingCycle === "monthly" ? pricing.localized.monthly : pricing.localized.yearly;
@@ -59,7 +78,8 @@ export function PricingCards() {
 
   async function startCheckout() {
     if (!userId) {
-      setMessage("Enter your user UUID to start checkout.");
+      setMessage("Please log in to start checkout.");
+      window.location.href = "/login?next=/plans";
       return;
     }
 
@@ -158,11 +178,6 @@ export function PricingCards() {
             placeholder="US"
             maxLength={2}
           />
-        </label>
-
-        <label className="space-y-2 text-sm font-semibold text-slate-700">
-          User ID (UUID)
-          <input value={userId} onChange={(event) => setUserId(event.target.value)} className="w-full rounded-xl bg-slate-100 px-3 py-3" placeholder="Required for checkout" />
         </label>
 
         <label className="space-y-2 text-sm font-semibold text-slate-700">

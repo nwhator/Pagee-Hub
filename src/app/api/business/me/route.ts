@@ -1,15 +1,15 @@
 import { NextResponse } from "next/server";
 import { hasSupabaseEnv, supabaseRest } from "@/lib/supabase";
-import { parseUserIdFromRequest } from "@/lib/subscription";
+import { resolveUserIdFromRequest } from "@/lib/subscription";
 
 export async function GET(request: Request) {
   if (!hasSupabaseEnv) {
     return NextResponse.json({ error: "Supabase is not configured" }, { status: 503 });
   }
 
-  const userId = parseUserIdFromRequest(request);
+  const userId = await resolveUserIdFromRequest(request);
   if (!userId) {
-    return NextResponse.json({ error: "Missing or invalid x-user-id header" }, { status: 400 });
+    return NextResponse.json({ error: "Authentication required" }, { status: 401 });
   }
 
   const result = await supabaseRest("BusinessPages", {

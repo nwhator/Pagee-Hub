@@ -4,13 +4,27 @@ import { validateSubscription } from "@/lib/validation";
 import { getStripe, hasStripe, stripeConfig } from "@/lib/stripe";
 import { hasSupabaseEnv, supabaseRest } from "@/lib/supabase";
 import { FIRST_PRO_MIN_MONTHS, getLocalizedPricingUsd, resolveCountryFromRequest, usdToCents } from "@/lib/pricing";
+import { resolveUserIdFromRequest } from "@/lib/subscription";
 
 export async function POST(request: Request) {
   if (!hasSupabaseEnv) {
     return NextResponse.json({ error: "Supabase is not configured" }, { status: 503 });
   }
 
-  const parsed = validateSubscription(await request.json());
+  const body = (await request.json()) as Record<string, unknown>;
+  const sessionUserId = await resolveUserIdFromRequest(request);
+
+  if (!sessionUserId) {
+    return NextResponse.json({ error: "Authentication required" }, { status: 401 });
+  }
+
+  if (typeof body.user_id === "string" && body.user_id && body.user_id !== sessionUserId) {
+    return NextResponse.json({ error: "user_id does not match authenticated user" }, { status: 403 });
+  }
+
+  body.user_id = sessionUserId;
+
+  const parsed = validateSubscription(body);
   if (!parsed.success) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }

@@ -2,6 +2,18 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const RESERVED_SUBDOMAINS = new Set(["www", "app", "api", "admin"]);
+const protectedPathPrefixes = [
+  "/dashboard",
+  "/template-library",
+  "/analytics",
+  "/reviews",
+  "/plans",
+  "/billing",
+  "/profile",
+  "/support",
+  "/onboarding",
+  "/admin"
+];
 
 function extractSubdomain(hostname: string, rootDomain: string) {
   const host = hostname.split(":")[0].toLowerCase();
@@ -48,6 +60,18 @@ export function proxy(request: NextRequest) {
     pathname.includes(".")
   ) {
     return NextResponse.next();
+  }
+
+  const requiresAuth = protectedPathPrefixes.some((prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`));
+  if (requiresAuth) {
+    const session = request.cookies.get("pagee_session")?.value;
+    if (!session) {
+      const loginUrl = request.nextUrl.clone();
+      loginUrl.pathname = "/login";
+      loginUrl.search = "";
+      loginUrl.searchParams.set("next", `${pathname}${request.nextUrl.search}`);
+      return NextResponse.redirect(loginUrl);
+    }
   }
 
   const hostHeader = request.headers.get("host") || "";
