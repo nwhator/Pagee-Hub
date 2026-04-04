@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tech Pulse | Digital Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f8f9ff",
+                      "primary-fixed": "#6bff8f",
+                      "inverse-surface": "#213145",
+                      "on-tertiary-fixed": "#00210b",
+                      "tertiary-container": "#71bc82",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#d3e4fe",
+                      "on-error": "#ffffff",
+                      "background": "#f8f9ff",
+                      "surface-dim": "#cbdbf5",
+                      "outline-variant": "#bccbb9",
+                      "on-secondary-container": "#646464",
+                      "on-surface-variant": "#3d4a3d",
+                      "surface-container": "#e5eeff",
+                      "primary": "#006e2f",
+                      "on-secondary-fixed-variant": "#474747",
+                      "on-tertiary-container": "#004b22",
+                      "on-primary-fixed-variant": "#005321",
+                      "secondary": "#5e5e5e",
+                      "outline": "#6d7b6c",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed": "#e2e2e2",
+                      "tertiary": "#1f6c3a",
+                      "on-surface": "#0b1c30",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary-fixed": "#1b1b1b",
+                      "on-primary-fixed": "#002109",
+                      "on-background": "#0b1c30",
+                      "primary-container": "#22c55e",
+                      "inverse-primary": "#4ae176",
+                      "inverse-on-surface": "#eaf1ff",
+                      "tertiary-fixed-dim": "#8bd79b",
+                      "error": "#ba1a1a",
+                      "surface-tint": "#006e2f",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-primary-container": "#004b1e",
+                      "surface-container-high": "#dce9ff",
+                      "primary-fixed-dim": "#4ae176",
+                      "tertiary-fixed": "#a6f4b5",
+                      "on-tertiary-fixed-variant": "#005226",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed-dim": "#c6c6c6",
+                      "secondary-container": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Inter"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shadow-soft-long {
+            box-shadow: 0 20px 40px rgba(11, 28, 48, 0.08);
+        }
+        .tactile-press-effect:active {
+            transform: scale(0.98);
+        }
+        .glass-header {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 glass-header shadow-soft-long">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-black text-white flex items-center gap-2">
+<span class="text-primary-container material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                Pagee Hub
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-green-600 dark:text-green-400 font-bold border-b-2 border-green-500 hover:scale-105 transition-transform duration-200" href="#">Templates</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:scale-105 transition-transform duration-200" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:scale-105 transition-transform duration-200" href="#">Support</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-8 py-2.5 rounded-xl font-bold transition-all hover:scale-105 tactile-press-effect">
+                Create Profile
+            </button>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 py-20 lg:py-32 flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2 space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-slate-900 border border-slate-800 text-primary-container text-xs font-label uppercase tracking-widest">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+                    Live Dashboard
+                </div>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">
+                    Pulse of <br/>
+<span class="text-primary-container">Innovation.</span>
+</h1>
+<p class="text-slate-400 text-xl max-w-md leading-relaxed">
+                    Elevate your SaaS presence with a high-octane business profile designed for the modern entrepreneur. 
+                </p>
+<div class="flex items-center gap-6 pt-4">
+<button class="bg-primary-container text-on-primary-container px-10 py-4 rounded-xl font-bold shadow-soft-long hover:scale-105 transition-transform">
+                        Launch Project
+                    </button>
+<button class="flex items-center gap-2 font-bold text-white group">
+<span class="material-symbols-outlined border border-slate-800 p-2 rounded-full group-hover:bg-slate-800 transition-colors">play_arrow</span>
+                        Watch Demo
+                    </button>
+</div>
+</div>
+<div class="lg:w-1/2 relative">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"></div>
+<div class="relative bg-slate-900/50 p-4 rounded-lg border border-slate-800/50 backdrop-blur-sm overflow-hidden shadow-2xl">
+<img class="rounded-lg w-full h-[500px] object-cover opacity-90" data-alt="Dark themed high-tech SaaS dashboard interface with glowing green neon graphs and futuristic data visualization blocks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz4S45rQ8Vis6eFt2yQt4P4cxbCffya-0Tl6PXiZczzJFQLnX8n-_1Ojxn_PQ7VFqbxValtFRhM9PHLkCo4ZrqPVs6UKAiinpRijfu-1CXB-QnmBS91U8Fz1IPfetOcRFeZFzBI0PfiQ1oj2coETYaYZheohVLwpNiAOBAof5E67TfOvSP9xQ24rCERIFyIPewz_oo5_9TGnUj2Ig2IXVPhqgz_9u6Jj_hOsR_Cj9jnp9ho4OeCWbJyaRgiJ-IAv5Mt5cY07TxSxY"/>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="max-w-7xl mx-auto px-8 py-24">
+<div class="mb-16">
+<span class="text-primary-container font-label uppercase tracking-widest text-xs">Core Engines</span>
+<h2 class="text-4xl font-bold mt-2">Built for Speed.</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<div class="md:col-span-8 bg-slate-900 rounded-lg p-12 flex flex-col justify-between group transition-all hover:bg-slate-800/80">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl text-primary-container" style="font-variation-settings: 'FILL' 1;">speed</span>
+<h3 class="text-3xl font-bold">Ultra-Low Latency</h3>
+<p class="text-slate-400 max-w-sm">Process millions of data points per second with our custom-built edge infrastructure.</p>
+</div>
+<div class="mt-12 overflow-hidden rounded-xl h-48">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Abstract visualization of digital data flowing through neon fiber optic lines in a dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxAi-18yl8bNvw0VpFo2G6gWa_M0yh5yUdk79Azv-F_3n5-6yeZWKiuyTRSl794uFgLnQ9Hncb-Lp6gKEd9BMwdB7tYjzLGSTmJsk7TCNFr8i3Is8YpUJKcMSKZ4YD2s7jf-r3s-4anBRZVSsH9okZV54mwNI22TDYOfyruKS_ReQwoMHvVGTCxM9kobWXy2wgehlvfZpCpBjKPIFMu_ESjoHNhbW_nM6J5kdR8CDLBaDmeVaL6su0c34QyK4Ym7bmgJTrPYXJWGA"/>
+</div>
+</div>
+<div class="md:col-span-4 bg-primary-container rounded-lg p-12 text-on-primary-container flex flex-col justify-between hover:translate-y-[-8px] transition-transform">
+<div class="space-y-4">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">security</span>
+<h3 class="text-3xl font-bold leading-tight">Hardened Security</h3>
+<p class="font-medium opacity-80">Military-grade encryption for every single node in your stack.</p>
+</div>
+<button class="mt-8 bg-on-primary-container text-white p-4 rounded-full self-start flex items-center justify-center">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="md:col-span-4 bg-slate-900 rounded-lg p-12 flex flex-col gap-6 hover:bg-slate-800/80 transition-all">
+<span class="material-symbols-outlined text-4xl text-primary-container">layers</span>
+<h3 class="text-2xl font-bold leading-tight">Infinite Scaling</h3>
+<p class="text-slate-400">Horizontal scaling that grows with your user base, no downtime guaranteed.</p>
+</div>
+<div class="md:col-span-8 bg-slate-900 rounded-lg p-12 relative overflow-hidden group">
+<div class="relative z-10 space-y-4 max-w-md">
+<h3 class="text-3xl font-bold">Global Mesh Network</h3>
+<p class="text-slate-400">Connect to your users wherever they are with 140+ points of presence globally.</p>
+</div>
+<div class="absolute right-[-10%] bottom-[-20%] w-2/3 h-full opacity-50 group-hover:opacity-80 transition-opacity">
+<img class="w-full h-full object-contain" data-alt="Glowing digital world map with network nodes connecting major global cities on a dark blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOJ1JEaqGYgVFINy3rSoJmhUB0A54LXUiwi2JkbEsS4393Cb64hYnYpA4-ccIh2af9VAgvdWi2jB1pNanUX_ELlswlAjQ1fjOq995KLxEuGRj_LkfEuwX-pG3ZgjMEdu9uZaQDmSRvelfy9Lp5Fw3jCVgeiJnrkuGRmxoEh7pPX2lTOUYyY9VhpUSRwdaCLs_oifi30m2Z7MNFp_AxR_dTeJ-9FFZrBs_waTDHCV_n8K1woXlS5w85_v33OUgm5LcucCZbqFvlxOE"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Embed Area -->
+<section class="bg-slate-900/30 py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="md:w-1/2 space-y-6">
+<h2 class="text-5xl font-black tracking-tight leading-tight">The Future of <br/> Tech Management.</h2>
+<p class="text-slate-400 text-lg">Watch how top-tier digital curators manage their entire portfolio through Tech Pulse. From seed round to global domination.</p>
+<ul class="space-y-4 pt-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span>Automated Resource Allocation</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span>Real-time Financial Pulse</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">check_circle</span>
+<span>AI-Driven Forecasting</span>
+</li>
+</ul>
+</div>
+<div class="md:w-1/2 w-full aspect-video bg-black rounded-lg relative flex items-center justify-center overflow-hidden border border-slate-800 group cursor-pointer shadow-2xl">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000" data-alt="Cinematic wide shot of a futuristic minimalist server room with soft green ambient lighting and steam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFQDsL_HJ6bmIMHyB1Jg92QNSixJqkJFs9JX-bH0RU_CvFHhFtoJ3D8pOF0PzTbbxkB0CDJsTqHENjmoFiziDNzh0P0CHab_EFYY_ZNIoxmGT4BVXSEPD48AOithYc9RekGGEIqb5AO9YlL-cKbE4NIz8ZZTN3Z-l8IMWJ67OoZ8TqltORk9DmsAsh93rhwFml3jDcFx4xjRGBgld20mEa0DjNUkALLji-7xlCQ49wRXLIQzCwWRUEv6U-G3p4rTvxgDU6MBVRx2U"/>
+<div class="relative z-10 w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="max-w-7xl mx-auto px-8 py-32">
+<div class="text-center mb-20">
+<h2 class="text-5xl font-black mb-4">Trusted by Visionaries</h2>
+<p class="text-slate-500">Leading founders who redefined their industries with us.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review Card 1 -->
+<div class="bg-slate-900 p-10 rounded-lg flex flex-col justify-between gap-8 border border-slate-800/50 hover:border-primary-container/30 transition-colors">
+<p class="text-xl italic leading-relaxed text-slate-300">"Tech Pulse hasn't just improved our workflow; it's completely transformed our company's DNA. The speed is unparalleled."</p>
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" data-alt="Portrait of a young entrepreneur with modern glasses and a confident smile in a bright studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_HC9hK3ibmZaNGrwnZDwIy0u1CeXyL_4la7TmZgKP01wpAokAkjTeonMRliLOANdLezt7Efh6PTY-XHFO8OixUNUQOhL9u8m5qLmmasxm0T_UYqVJbKh4LojGGDxKHyYRxEs85uLPSTFClxyOJwsFj8ukM49upjSUGq2gdVQAFC2Vb5VuqD9LvdRlQu-mCNbfI1SuXNHS_yCecYWnVVAZyXD9cRfz4IDz2qnL7Yeo_QSMg-6navtzdHq49uvUA3Zlgao7ToJWNB4"/>
+<div>
+<h4 class="font-bold">Alex Chen</h4>
+<p class="text-sm text-slate-500">CEO, Nexus AI</p>
+</div>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-slate-900 p-10 rounded-lg flex flex-col justify-between gap-8 border border-slate-800/50 hover:border-primary-container/30 transition-colors">
+<p class="text-xl italic leading-relaxed text-slate-300">"The bento-style dashboard and real-time analytics are addictive. I finally feel like I have total control over our cloud stack."</p>
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" data-alt="Close up portrait of a woman in business attire with professional lighting and blurred office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3C_2ZCDGmqeN7k44GiAv2osd0NMK3ARQnlEPwQz1VyrLFt3KrOMrAI4xVw1CmMmUsKKZJqzDen0-6_PPlaZJXDUcdxVARrglKp-9W9Y_awFKs8gDuXIkhR-VuztG94SZ5XEuZS6zrfk0IChoKXOXGispKmpWrFXRZwNiyyk_mOxrbSv1THqwLyYs0QYeTDkHA5OOaFMP9eSVG4GmRzCUegk8Rjhi6X02vM-QC7pMSrf5r9qdiq4-MZIwfinyKFOtaFBfLAltlK0U"/>
+<div>
+<h4 class="font-bold">Sarah Jenkins</h4>
+<p class="text-sm text-slate-500">Founder, CloudNine</p>
+</div>
+</div>
+</div>
+<!-- Review Card 3 -->
+<div class="bg-slate-900 p-10 rounded-lg flex flex-col justify-between gap-8 border border-slate-800/50 hover:border-primary-container/30 transition-colors">
+<p class="text-xl italic leading-relaxed text-slate-300">"Design and engineering usually fight each other. In Tech Pulse, they dance together. It’s pure digital high-end art."</p>
+<div class="flex items-center gap-4">
+<img class="w-14 h-14 rounded-full object-cover border-2 border-primary-container/20" data-alt="Headshot of a creative director with artistic lighting and a subtle grain texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB0WoeMa85EnaZvV1SjjWFx_Rm2NRzSPkH_UnkK4crdsyPB_lnE3VOgnH2PKxSv5h4AvnAhbY6o0RV5pR5rRLbBYbF33R_KDVmzHGLt5T6HnePlPqMrDkruu0sniWnY8KgCElLyfiy4ZAV3M28Tn_054SAm4Zqgl3J2QsksOkvtB5AHYkXoqjfyUOaIQVENPcyzpwJfqmwT4EB78tNJBoHrRSoCeSywYVM2eHCrbLtBHkcXbHhQ3PUImybcZ8ijc75fTWWvmbyXeI"/>
+<div>
+<h4 class="font-bold">Marcus Thorne</h4>
+<p class="text-sm text-slate-500">CTO, Verve Systems</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-7xl mx-auto px-8 pb-32">
+<div class="bg-primary-container rounded-lg p-16 text-on-primary-container text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/20 to-transparent opacity-30"></div>
+<h2 class="text-5xl md:text-7xl font-black tracking-tight mb-8 relative z-10">Start Your Pulse.</h2>
+<p class="text-xl max-w-2xl mx-auto mb-12 relative z-10 font-medium">Join over 5,000+ startups building the next generation of digital excellence on Pagee Hub.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<button class="bg-on-primary-container text-white px-12 py-5 rounded-xl font-bold text-lg hover:scale-105 transition-transform shadow-2xl">
+                        Build Free Profile
+                    </button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-on-primary-container px-12 py-5 rounded-xl font-bold text-lg hover:bg-white/20 transition-all">
+                        Talk to Sales
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 border-t-0 bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 max-w-7xl mx-auto gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="text-lg font-bold text-white flex items-center gap-2">
+<span class="text-primary-container material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    Pagee Hub
+                </div>
+<p class="text-slate-500 font-inter text-sm leading-relaxed max-w-xs text-center md:text-left">
+                    © 2024 Pagee Hub. Designed for the Digital Curator.
+                </p>
+</div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-green-500 transition-colors font-inter text-sm" href="#">Privacy Policy</a>
+<a class="text-slate-500 hover:text-green-500 transition-colors font-inter text-sm" href="#">Terms of Service</a>
+<a class="text-slate-500 hover:text-green-500 transition-colors font-inter text-sm" href="#">Contact Us</a>
+</div>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary-container hover:border-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-sm">alternate_email</span>
+</a>
+<a class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-primary-container hover:border-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-sm">language</span>
+</a>
+</div>
+</div>
+</footer>
+</body></html>

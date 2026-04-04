@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Help &amp; Support | Pagee Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9ff",
+                    "on-tertiary-fixed": "#00210b",
+                    "on-surface": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#4ae176",
+                    "on-secondary-container": "#646464",
+                    "secondary": "#5e5e5e",
+                    "on-primary-fixed-variant": "#005321",
+                    "on-tertiary-fixed-variant": "#005226",
+                    "tertiary-container": "#71bc82",
+                    "surface-tint": "#006e2f",
+                    "on-tertiary-container": "#004b22",
+                    "tertiary": "#1f6c3a",
+                    "outline": "#6d7b6c",
+                    "inverse-surface": "#213145",
+                    "on-primary-fixed": "#002109",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "primary-fixed": "#6bff8f",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-container": "#e2e2e2",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed-dim": "#4ae176",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary": "#006e2f",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-primary-container": "#004b1e",
+                    "on-surface-variant": "#3d4a3d",
+                    "surface-container": "#e5eeff",
+                    "outline-variant": "#bccbb9",
+                    "inverse-on-surface": "#eaf1ff",
+                    "primary-container": "#22c55e",
+                    "background": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-fixed-variant": "#474747",
+                    "tertiary-fixed": "#a6f4b5",
+                    "tertiary-fixed-dim": "#8bd79b",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar (Authority: Shared Components JSON) -->
+<aside class="hidden lg:flex flex-col py-8 px-4 h-screen w-64 fixed left-0 top-0 bg-slate-50 dark:bg-slate-950 z-40">
+<div class="mb-12 px-4">
+<h1 class="text-xl font-black text-slate-900 dark:text-white tracking-tight">Entrepreneur Studio</h1>
+<p class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Premium Plan</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Navigation Items Mapping -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-500 hover:bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-500 hover:bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">auto_fix</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Page Creator</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-500 hover:bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-500 hover:bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Subscription</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-slate-500 hover:bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">reviews</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Reviews</span>
+</a>
+<!-- Active Tab: Help -->
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all text-green-600 border-r-4 border-green-500 bg-white translate-x-1" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-inter text-sm font-semibold uppercase tracking-widest">Help</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full py-4 bg-primary-container text-on-primary-container rounded-xl font-bold text-xs uppercase tracking-widest hover:scale-[1.02] transition-transform shadow-lg shadow-primary-container/20">
+                Create New Page
+            </button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="lg:ml-64 min-h-screen pb-32 lg:pb-12 px-6 lg:px-16 pt-12 max-w-7xl">
+<!-- Hero Section: Editorial Voice -->
+<header class="mb-20">
+<h2 class="text-[3.5rem] font-bold tracking-[-0.04em] leading-[1.1] text-on-surface mb-6">
+                How can we <br/><span class="text-primary-container">support</span> your vision?
+            </h2>
+<p class="text-lg text-secondary max-w-2xl leading-relaxed">
+                Expert assistance for the modern entrepreneur. Whether you're stuck on a layout or scaling your reach, our team is here to guide your studio's growth.
+            </p>
+</header>
+<!-- Asymmetric Grid Content -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Left Column: FAQ Accordion (Bento-style layout) -->
+<section class="lg:col-span-7 space-y-6">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xs font-bold uppercase tracking-[0.1em] text-secondary">Frequently Asked Questions</h3>
+<div class="h-px flex-1 bg-outline-variant/20 ml-6"></div>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<details class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+<span class="text-xl font-bold tracking-tight">How do I connect a custom domain?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-secondary leading-relaxed border-t border-outline-variant/10 pt-4">
+                            Connecting a custom domain is seamless. Navigate to Settings &gt; Domains, and enter your URL. We provide a simplified CNAME record that you can copy-paste into your registrar's DNS settings. SSL is automatically provisioned within 15 minutes.
+                        </div>
+</details>
+<!-- FAQ Item 2 -->
+<details class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+<span class="text-xl font-bold tracking-tight">Can I export my Pagee Studio projects?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-secondary leading-relaxed border-t border-outline-variant/10 pt-4">
+                            Yes, all Premium plans include full code export. You can download your site as a high-performance static build (HTML/CSS/JS) ready for any hosting provider.
+                        </div>
+</details>
+<!-- FAQ Item 3 -->
+<details class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+<span class="text-xl font-bold tracking-tight">What are the limits on the Premium Plan?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-secondary leading-relaxed border-t border-outline-variant/10 pt-4">
+                            The Premium Plan is designed for high-growth creators. You get unlimited landing pages, priority support, and up to 100k monthly unique visitors. For larger needs, explore our Enterprise options.
+                        </div>
+</details>
+<!-- FAQ Item 4 -->
+<details class="group bg-surface-container-lowest rounded-lg overflow-hidden transition-all duration-300">
+<summary class="flex items-center justify-between p-8 cursor-pointer list-none">
+<span class="text-xl font-bold tracking-tight">How does the review moderation work?</span>
+<span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-secondary leading-relaxed border-t border-outline-variant/10 pt-4">
+                            Our AI-driven moderation system filters spam and offensive content automatically. You maintain full control to approve, hide, or respond to individual reviews from your dashboard.
+                        </div>
+</details>
+</div>
+</section>
+<!-- Right Column: Contact Form (Elevated Surface) -->
+<section class="lg:col-span-5">
+<div class="sticky top-24 bg-surface-container-low p-10 rounded-lg shadow-sm border border-outline-variant/10">
+<h3 class="text-2xl font-bold mb-2 tracking-tight">Direct Support</h3>
+<p class="text-sm text-secondary mb-8">Can't find what you need? Send a message to our human team.</p>
+<form action="#" class="space-y-5">
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Your Name</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-md p-4 focus:ring-2 focus:ring-primary-container transition-all" placeholder="Alex Rivera" type="text"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Email Address</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-md p-4 focus:ring-2 focus:ring-primary-container transition-all" placeholder="alex@studio.co" type="email"/>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Subject</label>
+<select class="w-full bg-surface-container-lowest border-none rounded-md p-4 focus:ring-2 focus:ring-primary-container appearance-none transition-all">
+<option>General Inquiry</option>
+<option>Billing &amp; Subscription</option>
+<option>Technical Issue</option>
+<option>Feedback</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Message</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-md p-4 focus:ring-2 focus:ring-primary-container transition-all resize-none" placeholder="Tell us more about your challenge..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-5 rounded-xl flex items-center justify-center gap-2 mt-4 hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-primary-container/10" type="submit">
+                            Send Message
+                            <span class="material-symbols-outlined text-sm">send</span>
+</button>
+</form>
+<div class="mt-10 pt-10 border-t border-outline-variant/20 flex items-center gap-6">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-surface overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional customer support representative with a friendly smile on a clean grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ9qVPsaq6GCOxqZrG7A8bJdESychvFTzInAwPJvjc6zwrxtcspKNfENjDPKuZ7GRsu2b856sGpboiC-6RLwVC-C72o4iNyqd21we0H71-m70uPNh-WCt4UG1JiewWTy_pp0WaumjEz4-1TGkUCfP-yc_sIzegTES2uG60QbPWhzuxcV9yVs6ThXpPYkRuB0mU2HFVaQNiSekLk52FP3vW1uyI4FGNHBEIktmzdle3NFpOw6OEnMFlkyEs2iKfyGcEUB_8D1Dz2II"/>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-surface overflow-hidden bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="portrait of a young male technical expert with glasses and professional attire in a bright office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA44-y-9917fQ7Te88YwGj6eVu21WU9knXbq86qcW_lMckZD9DsY-qejJJEurtCZYZlXyMNoFVE6GkkuTcqLTt8hsawfHsy_pMDeE8SIo3KPer7yXiDSf2tDjMqy-sWEtq0jDpI3jUtrXhMQSDF_g4nHtZci0LzAm6vLRSwkJd6D2DoQDpgz9h3P6ykkt0MDwrfHEqbprOr86ZQIFg4pilFu4xMHCuM8r58hCzQZe8H4GNJLfXzN6oW9Gvz2iwK4Ien6ObGMWeIe8Y"/>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold">Average Response Time</p>
+<p class="text-xs text-primary-container font-bold">2 Hours or less</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Authority: Shared Components JSON) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-white/70 backdrop-blur-2xl border-t border-slate-100 shadow-[0_-20px_40px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Stats</span>
+</a>
+<!-- Active Tab: Help -->
+<a class="flex flex-col items-center justify-center bg-green-100 text-green-700 rounded-full px-6 py-2 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Help</span>
+</a>
+</nav>
+<!-- Chatbot Widget (Floating Corner) -->
+<div class="fixed bottom-24 right-8 lg:bottom-12 lg:right-12 z-50 flex flex-col items-end gap-4">
+<!-- Chat Bubble -->
+<div class="hidden md:flex bg-surface-container-lowest shadow-2xl rounded-2xl p-4 max-w-[200px] border border-outline-variant/10 mb-2">
+<p class="text-xs font-medium text-on-surface">Hi there! 👋 I'm the Pagee Hub AI. Need a quick answer?</p>
+</div>
+<!-- FAB button -->
+<button class="w-16 h-16 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+</div>
+</body></html>

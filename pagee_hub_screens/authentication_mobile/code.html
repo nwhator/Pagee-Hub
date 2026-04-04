@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pagee Hub - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "tertiary-container": "#71bc82",
+                        "surface-tint": "#006e2f",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#646464",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#6bff8f",
+                        "secondary": "#5e5e5e",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline-variant": "#bccbb9",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#4ae176",
+                        "on-tertiary-fixed": "#00210b",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-primary-fixed-variant": "#005321",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-surface-variant": "#3d4a3d",
+                        "on-primary-fixed": "#002109",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary": "#006e2f",
+                        "on-primary-container": "#004b1e",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#a6f4b5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary": "#1f6c3a",
+                        "primary-container": "#22c55e",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#004b22",
+                        "secondary-container": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "outline": "#6d7b6c",
+                        "tertiary-fixed-dim": "#8bd79b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-center">
+<!-- Top Navigation Shell Suppressed for Transactional Flow -->
+<main class="w-full max-w-md px-6 py-12 flex flex-col gap-10">
+<!-- Brand Identity Section -->
+<header class="flex flex-col gap-4 text-center">
+<div class="mx-auto w-16 h-16 bg-primary-container flex items-center justify-center rounded-xl shadow-lg">
+<span class="material-symbols-outlined text-on-primary-container text-4xl" data-icon="hub">hub</span>
+</div>
+<div class="flex flex-col gap-1">
+<h1 class="text-4xl font-black tracking-tighter text-on-surface">Pagee Hub</h1>
+<p class="text-on-surface-variant font-medium tracking-tight">Curation for the New Era.</p>
+</div>
+</header>
+<!-- Auth Card -->
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_20px_40px_rgba(0,0,0,0.04)] flex flex-col gap-8">
+<!-- Auth Toggle Tabs -->
+<div class="flex p-1 bg-surface-container-low rounded-xl">
+<button class="flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg bg-surface-container-lowest text-on-surface shadow-sm">
+                    Login
+                </button>
+<button class="flex-1 py-3 text-sm font-bold tracking-widest uppercase rounded-lg text-on-surface-variant hover:text-on-surface transition-colors">
+                    Sign Up
+                </button>
+</div>
+<!-- Form Container -->
+<form class="flex flex-col gap-6" onsubmit="return false;">
+<div class="flex flex-col gap-2">
+<label class="text-[10px] uppercase tracking-[0.1em] font-bold text-on-surface-variant px-1">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface placeholder:text-outline-variant" placeholder="hello@curator.com" type="email"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-[10px] uppercase tracking-[0.1em] font-bold text-on-surface-variant">Password</label>
+<a class="text-[10px] uppercase tracking-[0.1em] font-bold text-primary hover:text-primary-container transition-colors" href="#">Forgot?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-md focus:ring-2 focus:ring-primary-container transition-all text-on-surface placeholder:text-outline-variant" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full py-5 bg-primary-container text-on-primary-container font-black tracking-tight text-lg rounded-xl shadow-[0_10px_20px_-5px_rgba(34,197,94,0.4)] active:scale-[0.98] transition-transform hover:opacity-90">
+                    Enter Dashboard
+                </button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-4">
+<div class="flex-1 h-[1px] bg-outline-variant/30"></div>
+<span class="text-[10px] uppercase tracking-widest font-bold text-outline-variant">Or continue with</span>
+<div class="flex-1 h-[1px] bg-outline-variant/30"></div>
+</div>
+<!-- Social Buttons -->
+<div class="flex gap-4">
+<button class="flex-1 flex items-center justify-center py-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<img alt="Google" class="w-6 h-6 object-contain" data-alt="clean minimal google g logo colorful on white background vector style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsQkJMt4-DTyeTgAYndEgvht3C4sFKySjHhalEeQXedMFE6QrM5b3LjHgtpHm6BCy1x3Vbso4KCnPy4DbC44tD4AWRMtEJFv8gnYwnZ20Y-Wd8N26X5l6tHtrQ9Lk2QaojmL3OhJeH0RDZ8dT9AbrWCVMp0mrBjH8-FS71bBY82myvH7vqFZYRp4pk109Th7XvWIJjz09inKSekUbwf1MIXjxxtQ1afsUmMF0FS7aFQHHbalKEdhK34zmuRidhHYAW-nJS-mHh8W4"/>
+</button>
+<button class="flex-1 flex items-center justify-center py-4 bg-surface-container-low rounded-xl hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-blue-600 text-2xl" data-icon="facebook" style="font-variation-settings: 'FILL' 1;">social_leaderboard</span>
+</button>
+</div>
+</div>
+<!-- Footer Help -->
+<footer class="text-center">
+<p class="text-on-surface-variant text-sm font-medium">
+                New to the hub? <a class="text-primary font-bold decoration-2 underline-offset-4 hover:underline" href="#">Get started today</a>
+</p>
+</footer>
+</main>
+<!-- Visual Accent Element (Asymmetry) -->
+<div class="fixed -top-24 -right-24 w-64 h-64 bg-primary-container/10 rounded-full blur-3xl -z-10"></div>
+<div class="fixed -bottom-24 -left-24 w-80 h-80 bg-tertiary-container/10 rounded-full blur-3xl -z-10"></div>
+<!-- Bottom Nav Suppressed (Transactional/Linear Flow) -->
+</body></html>

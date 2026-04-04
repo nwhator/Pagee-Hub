@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed-variant": "#474747",
+                    "tertiary-container": "#71bc82",
+                    "surface-tint": "#006e2f",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#646464",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed": "#6bff8f",
+                    "secondary": "#5e5e5e",
+                    "surface-container-highest": "#d3e4fe",
+                    "outline-variant": "#bccbb9",
+                    "on-surface": "#0b1c30",
+                    "on-background": "#0b1c30",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-primary": "#4ae176",
+                    "on-tertiary-fixed": "#00210b",
+                    "surface-dim": "#cbdbf5",
+                    "primary-fixed-dim": "#4ae176",
+                    "on-primary-fixed-variant": "#005321",
+                    "on-tertiary-fixed-variant": "#005226",
+                    "inverse-surface": "#213145",
+                    "secondary-fixed-dim": "#c6c6c6",
+                    "on-surface-variant": "#3d4a3d",
+                    "on-primary-fixed": "#002109",
+                    "surface": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "primary": "#006e2f",
+                    "on-primary-container": "#004b1e",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#a6f4b5",
+                    "surface-container-low": "#eff4ff",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary": "#1f6c3a",
+                    "primary-container": "#22c55e",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#1b1b1b",
+                    "on-error": "#ffffff",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#004b22",
+                    "secondary-container": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "outline": "#6d7b6c",
+                    "tertiary-fixed-dim": "#8bd79b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-header { backdrop-filter: blur(24px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased mb-32">
+<nav class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="brand_awareness">brand_awareness</span>
+</div>
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white">Pagee Hub</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface transition-opacity hover:opacity-80 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</nav>
+<header class="pt-24 px-6 pb-12">
+<div class="relative w-full aspect-[4/5] rounded-lg overflow-hidden mb-8 shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="high-end modern architect studio interior with minimalist furniture and natural afternoon light coming through large windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyUZTYjb2TuzZsFL3hznB1VBS7_V_XCZbPyWr-UJTSmLqgEZjzTImhSXfF0nOywLIGnkKCIXeaO38IME-cIvuvOBwE7SCUgIWUlrHW-ql18sOKK8IAKfPJi1MCzIHvotLYMfetWiwTSAvflGqxaOjJ7r9an0oWz2rumW8ZnmD-lkA67jR-U2gZYqFAqTLkmeRDa-qjjceqLP4kH9jYvnqKNS7PmIbnANijzDL-u32iDqq5Y7JVArr30sugvzj2mG4lOrLsi8Nfmys"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<p class="text-white/80 label-sm uppercase tracking-widest font-bold mb-2">Design Collective</p>
+<h1 class="text-white text-4xl font-bold tracking-tight mb-4 leading-tight">Vanguard Interiors</h1>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary-container text-on-primary-container px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Top Rated</span>
+<span class="bg-white/20 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Premium Partner</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-primary-container text-on-primary-container py-5 px-6 rounded-xl flex items-center justify-center gap-3 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined" data-icon="chat" style="font-variation-settings: 'FILL' 1;">chat</span>
+<span class="font-bold tracking-tight">WhatsApp</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface py-5 px-6 rounded-xl flex items-center justify-center gap-3 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="call" style="font-variation-settings: 'FILL' 1;">call</span>
+<span class="font-bold tracking-tight">Call Now</span>
+</button>
+</div>
+</header>
+<section class="px-6 mb-16">
+<div class="flex justify-between items-end mb-8">
+<h2 class="text-3xl font-bold tracking-tight">Services</h2>
+<p class="text-sm font-bold uppercase tracking-widest text-primary">View Catalog</p>
+</div>
+<div class="space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col gap-4">
+<div class="w-14 h-14 bg-surface-container-low rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="architecture">architecture</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Architectural Planning</h3>
+<p class="text-on-surface-variant leading-relaxed">Comprehensive structural blueprints and permit management for luxury residential projects.</p>
+</div>
+<div class="pt-4 mt-auto">
+<p class="text-2xl font-black text-on-surface">$2,400 <span class="text-sm font-normal text-on-surface-variant">/ Starting</span></p>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col gap-4">
+<div class="w-14 h-14 bg-surface-container-lowest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="format_paint">format_paint</span>
+</div>
+<div>
+<h3 class="text-xl font-bold mb-2">Interior Curation</h3>
+<p class="text-on-surface-variant leading-relaxed">Editorial-grade furniture sourcing, color theory consultation, and spatial choreography.</p>
+</div>
+<div class="pt-4 mt-auto">
+<p class="text-2xl font-black text-on-surface">$1,850 <span class="text-sm font-normal text-on-surface-variant">/ Session</span></p>
+</div>
+</div>
+</div>
+</section>
+<section class="mb-16">
+<div class="px-6 mb-8">
+<h2 class="text-3xl font-bold tracking-tight">Portfolio</h2>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-8 px-6 scrollbar-hide no-scrollbar">
+<div class="min-w-[280px] aspect-[3/4] rounded-lg overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="luxury living room with large beige sofa, abstract art on walls, and minimalist oak flooring in daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY2Rrlto9KMy6a6qFLHi7PztvJgg2An2XPgb10MJ1YW1e3MB3PrclMqsD9rb6h7E9XW96XYl7wewuWa13z-QWhjTvo0ge1awHC4aiNfunhz9zuWOzwg1whNY5gDPc78BSuUreIlZVPrGB1krfJlXYeK8JJlXcKxEXnBHVJeQbzyY2KQRlZor6VjqN0DCGZra3qLpYlZqufOmj8jffLuYPJ5_rfGuBnq08CeTh-1_v1snSWVXRHOHxyZz3J4kVkLAb385xE6u7HFCU"/>
+<div class="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-xl p-4 rounded-xl border border-white/20">
+<p class="text-white text-xs font-bold uppercase tracking-widest">Berlin Penthouse</p>
+</div>
+</div>
+<div class="min-w-[280px] aspect-[3/4] rounded-lg overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="scandinavian style kitchen with matte black cabinetry and white marble backsplash with warm overhead lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpyXgZUqUu-Gu6_6-tgpEiKK1ZvLvUSF8-pEyN0w-I5Sc1N_yXrwC-xRTmF45CAcPvqF_4tg8XDwawS8mNkEYqYO8BmzaJGgRYgZOYKB7LxoGKEBlhR0GGtXllqBjzVuWdHknI3GH5178OfFxLzWi4A-hBdc2Dx2-zShS3yRBEyVBeo0dX401dvsY3-EL7YutZZqihA_2tz6_XjE2Q9Q8vSFD45jl-BWeTzE_qSJealqwj4ZpaNG2dYPGSCnQ4u2nYXR5_xF2MPss"/>
+<div class="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-xl p-4 rounded-xl border border-white/20">
+<p class="text-white text-xs font-bold uppercase tracking-widest">Nordic Loft</p>
+</div>
+</div>
+<div class="min-w-[280px] aspect-[3/4] rounded-lg overflow-hidden flex-shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="serene master bedroom with floor to ceiling windows overlooking a forest at dusk with warm ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzkiWSWFkHjRuGqYo4OXw-qovGjzNuvH7dltu2s0ceTWt8z6XJ323_LKdQ8cffvhwcn3wvFWsgzHtW1Z-JXEQIa7dRk0SM6Gk3NG5sbSdEANYfFDbYend0gd8EuNO3w5ENoxuDdP7iM-PaXs88QoJl9q5NA4GUZt3iN4MJr0kDPdtEN4liQImHPVD-4TytgIAlz-cM08NvnJGudmpRpHufGaedMLiivohKCZoCQx8wmj1CEpZZ3OUchRJ6NyRTLjGF5zpOO6AemC0"/>
+<div class="absolute bottom-4 left-4 right-4 bg-white/20 backdrop-blur-xl p-4 rounded-xl border border-white/20">
+<p class="text-white text-xs font-bold uppercase tracking-widest">Pacific Retreat</p>
+</div>
+</div>
+</div>
+</section>
+<section class="px-6 mb-16">
+<h2 class="text-3xl font-bold tracking-tight mb-8">Client Voices</h2>
+<div class="relative bg-surface-container-high p-10 rounded-lg overflow-hidden">
+<span class="material-symbols-outlined text-8xl absolute -top-4 -right-4 text-white opacity-40 select-none" data-icon="format_quote">format_quote</span>
+<div class="relative z-10">
+<p class="text-lg italic leading-relaxed text-on-surface mb-6">"The attention to detail and editorial eye transformed our workspace into a true brand statement. Unmatched professionalism."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional middle-aged man with beard smiling in high-end office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtDUVhyn3sZ1XnyKpRI8OBrLeiXyw1JhE3MuAxFdgFWXO97G5A0OfC-iFccHwNIHkT5A-zawXud6-IzfRAh6Cq42ynM6zydUJSJTfhMc81wud6yt_3hqP4dCz86h8dFdyyG0K7wvbG-Fhu-cSjPOmPO-qTqZllOPJlDs-3yJLF15A0fG894uyrsGgvV96_Czp1NrUHkdqR_0sF887YXwiYUXbXtQhs1fZaztMoX3aakbsz0xH8Lk_cP1KJpxcU8g5VzEhJ9b4S8e8"/>
+</div>
+<div>
+<p class="font-bold">Marcus Chen</p>
+<p class="text-xs text-on-surface-variant font-bold uppercase tracking-widest">CEO, Zenith Tech</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-surface-container-low px-6 py-12 mb-10">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl text-on-primary-container" data-icon="share">share</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Spread the Word</h3>
+<p class="text-on-surface-variant text-sm mb-8 max-w-[240px]">Recommend our services to your network and colleagues.</p>
+<div class="flex gap-4 mb-12">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</div>
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</div>
+</div>
+<p class="text-[10px] uppercase tracking-[0.2em] font-bold text-outline">© 2024 Vanguard Interiors • Pagee Hub Platform</p>
+</div>
+</footer>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-4 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-[0_-20px_40px_rgba(0,0,0,0.08)] rounded-t-[2rem]">
+<div class="flex flex-col items-center justify-center bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full px-5 py-2 scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Overview</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Create</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Stats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-50 transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Settings</span>
+</div>
+</nav>
+</body></html>

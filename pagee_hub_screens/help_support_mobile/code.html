@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "tertiary-container": "#71bc82",
+                        "surface-tint": "#006e2f",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#646464",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f8f9ff",
+                        "primary-fixed": "#6bff8f",
+                        "secondary": "#5e5e5e",
+                        "surface-container-highest": "#d3e4fe",
+                        "outline-variant": "#bccbb9",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#4ae176",
+                        "on-tertiary-fixed": "#00210b",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed-dim": "#4ae176",
+                        "on-primary-fixed-variant": "#005321",
+                        "on-tertiary-fixed-variant": "#005226",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#c6c6c6",
+                        "on-surface-variant": "#3d4a3d",
+                        "on-primary-fixed": "#002109",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "primary": "#006e2f",
+                        "on-primary-container": "#004b1e",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#a6f4b5",
+                        "surface-container-low": "#eff4ff",
+                        "surface-variant": "#d3e4fe",
+                        "tertiary": "#1f6c3a",
+                        "primary-container": "#22c55e",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "on-error": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#004b22",
+                        "secondary-container": "#e2e2e2",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "outline": "#6d7b6c",
+                        "tertiary-fixed-dim": "#8bd79b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Brand Logo" class="w-8 h-8" data-alt="Abstract geometric logo mark with interlocking green shapes on a clean white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj3-qgtUwmMMETmJj-Ej9g8pBf9_xdjgO7UE2G2VXVeBArnEnI0onBb-Z0E6A_H8c4UN4BRbZ7QtMSDyjU3qta9vclrlaOuYB7mkeXLN3HrYr3_iA3SyarzzpG74JFLPAe9Pv2z3vEofbAFnXT-4ChtHV7_cervtV0Gkwx88qSyo5sJBWmzZ5m50Fu5SiQJm4u6u_3jkAYKMpPh9VIluWZ15q6pyLs8_EMz7prMFkmZ5gH6_7Tq_AlHurfoG_wjdgG-XenSUdnV-o"/>
+</div>
+<span class="text-xl font-black tracking-tighter text-slate-900 dark:text-white">Pagee Hub</span>
+</div>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-slate-100/50 dark:bg-slate-800/50 text-slate-400 dark:text-slate-500 hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-6">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="text-[3.5rem] leading-none font-black tracking-[-0.04em] mb-6 text-on-surface">
+                Help &amp; <br/><span class="text-primary-container">Support</span>
+</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8 max-w-xs">
+                Find answers to your questions or get in touch with our expert team.
+            </p>
+<!-- Search Bar -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-5 pl-14 pr-6 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" placeholder="Search for help topics..." type="text"/>
+</div>
+</section>
+<!-- Direct Support Card (The "Momentum" Action) -->
+<section class="mb-12">
+<div class="bg-primary-container p-8 rounded-lg shadow-[0_20px_40px_rgba(34,197,94,0.15)] relative overflow-hidden">
+<!-- Decorative background elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-on-primary-container animate-pulse"></span>
+<span class="text-xs font-bold tracking-widest uppercase text-on-primary-container opacity-80">Live Support</span>
+</div>
+<h2 class="text-2xl font-bold text-on-primary-container mb-2">Need a human?</h2>
+<p class="text-on-primary-container/80 mb-6 font-medium">Estimated response time: <span class="text-on-primary-container font-black">~5 mins</span></p>
+<button class="w-full bg-on-primary-container text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform active:scale-95">
+<span class="material-symbols-outlined text-xl" data-icon="chat_bubble">chat_bubble</span>
+                        Start Live Chat
+                    </button>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-6">
+<h3 class="text-xs font-bold tracking-widest uppercase text-on-surface-variant">Popular Questions</h3>
+<span class="text-primary text-sm font-bold">View All</span>
+</div>
+<div class="space-y-4">
+<!-- Accordion Item 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden transition-all border border-outline-variant/10">
+<button class="w-full px-6 py-6 flex items-center justify-between text-left group">
+<span class="font-bold text-on-surface pr-4">How do I export my analytics?</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+<!-- Accordion Item 2 (Active/Open State) -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-primary-container/20">
+<button class="w-full px-6 py-6 flex items-center justify-between text-left">
+<span class="font-bold text-primary pr-4">Can I manage multiple accounts?</span>
+<span class="material-symbols-outlined text-primary rotate-180 transition-transform" data-icon="expand_more">expand_more</span>
+</button>
+<div class="px-6 pb-6 text-on-surface-variant leading-relaxed text-sm">
+                        Yes, our Professional and Enterprise plans allow you to manage up to 5 and unlimited sub-accounts respectively. You can toggle between them using the workspace switcher in the Top Bar.
+                    </div>
+</div>
+<!-- Accordion Item 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/10">
+<button class="w-full px-6 py-6 flex items-center justify-between text-left group">
+<span class="font-bold text-on-surface pr-4">Setting up custom domains</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Contact Support Form (The "Quiet Entry") -->
+<section class="mb-12 bg-surface-container-low rounded-lg p-8">
+<h3 class="text-2xl font-bold mb-2">Send us a message</h3>
+<p class="text-on-surface-variant mb-8 text-sm">Drop us a line and we'll get back to you within 24 hours.</p>
+<form class="space-y-4">
+<div>
+<label class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2 ml-1">Subject</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-6 text-on-surface focus:ring-2 focus:ring-primary-container/20 transition-all outline-none" placeholder="I have a question about..." type="text"/>
+</div>
+<div>
+<label class="block text-[10px] font-black uppercase tracking-widest text-on-surface-variant mb-2 ml-1">Message</label>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-xl py-4 px-6 text-on-surface focus:ring-2 focus:ring-primary-container/20 transition-all outline-none resize-none" placeholder="Tell us more about your issue..." rows="4"></textarea>
+</div>
+<button class="w-full bg-on-surface text-white py-5 rounded-xl font-bold hover:opacity-90 transition-opacity active:scale-95" type="submit">
+                    Send Message
+                </button>
+</form>
+</section>
+<!-- Asymmetric Support Team Section -->
+<section class="mb-8 flex flex-col gap-6">
+<div class="flex gap-4 items-center">
+<div class="flex -space-x-3">
+<img alt="Support 1" class="w-12 h-12 rounded-full border-4 border-surface" data-alt="Portrait of a friendly smiling male customer support agent in professional casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOoWbCRhfXEC9iuGZtWZKVfJRiEkuq23WIPASHkMwuclOTpqXKtL1zt050lNsx1UmZ9UjG_gYDah_m1y-2HHn6qsCZ6BBDs-gg6uoYygTW_fQQcl8P-XacsdcXbi4F2wBqt1g2wDhuI_8GbVAnufaM6QOCLsm83bSVq1zftbs-shmtTAf7JT209KeNSXxH-hfP6yWy26_uFvRhUDEPmzclMcdpUlJ1aCZ9ukYmCDNqH9VXeXwReB2RmHYBNcIwEJmeba7ACw9rlhM"/>
+<img alt="Support 2" class="w-12 h-12 rounded-full border-4 border-surface" data-alt="Portrait of a friendly smiling female customer support agent with glasses in professional casual attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFocTXPR17d0b7PYD_QGdnC3bVEgoWT9gFkLl8lWEm9oitAyYx0BoVjFNONqPFLiaxUWApXyQxnJum_s0_WI5vhlGFdUGlpezltiqSp007XpOmBicLAgOg8nahOYZe0_dHWpgJsIfmVOzAkMJkfI_pAigVwQdXXvfIJWtKXnBbuu8ONTSPHw5sH_h4t1ii0t89bjyufBRAQaS9hRN3N10Ks3cKOW6b0VDk5EfzYh4mKoL9_5rMzDbokCB26dTFhzWTvvIvvhqJ5Q8"/>
+<img alt="Support 3" class="w-12 h-12 rounded-full border-4 border-surface" data-alt="Portrait of a smiling young support specialist with a diverse background and a warm expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbCHdplrHzlCQ3wTDNPBqCNmxjf5h0Xlw0tm5-P6ukBERGzgXQUmwlouDpsQ3k__ef8J_4OvSMWwyxUpzYEZsLQu3IQ3cZ116L1rb8McUa233sWNhrYoycA4MHo2hIDMFbiYJnDADqRCFyF3e2LRnD5XVt7r_ui0Jd15QwOgjzoDmltB7zm1Ny7a-W1MHtK0keKp2RLXqAXJdgoOZVyD2u7jyhSI0H5f9vBLSNmWmLH5_nECSakQBXIIqTHmkWmCzWud1osVdB8CA"/>
+</div>
+<p class="text-xs font-bold text-on-surface-variant leading-tight">
+                    Our team is <br/>online right now.
+                </p>
+</div>
+<div class="h-[200px] rounded-lg overflow-hidden relative">
+<img alt="Workspace" class="w-full h-full object-cover grayscale opacity-30" data-alt="Modern minimalist high-end creative studio workspace with clean white desks and soft architectural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA8oNsV8ecGbjG8l1Lq__ztlbb_EiQKUwL-Wia9KcyKR2x1_2JqndRangyhBEx3hAGhl_feg2AXPRLl6voM3H3rakWVKT1K8JbO23INhTGRytmWIymmLbwSxNb3aNxbj_AJlggUDjfXj1IG38foZr2RuPy8c1MKMHBpNCRvHfM9oVMkPNXmnnNrWEGCGtGdKEokHkrrg9280YimqTwJUBHik1AJ76yxK7GG9TfsDjj7i--4hW9taINs7ve-dmCUW_Va9SH1gMht6o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl flex justify-around items-center px-4 pb-8 pt-4 rounded-t-[2rem] shadow-[0_-20px_40px_rgba(0,0,0,0.08)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Overview</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:text-green-500 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Stats</span>
+</a>
+<!-- Active: Settings (Support is often under settings/help cluster) -->
+<a class="flex flex-col items-center justify-center bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full px-5 py-2 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="text-[10px] uppercase tracking-widest font-bold font-inter mt-1">Settings</span>
+</a>
+</nav>
+</body></html>
