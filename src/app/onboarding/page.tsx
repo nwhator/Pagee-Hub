@@ -1,14 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 type Step = 1 | 2 | 3 | 4 | 5;
 
 export default function OnboardingPage() {
   const router = useRouter();
-  const params = useSearchParams();
-  const initialUserId = params.get("user_id") || "";
+
+  const initialUserId = (() => {
+    if (typeof window === "undefined") {
+      return "";
+    }
+    return new URLSearchParams(window.location.search).get("user_id") || "";
+  })();
 
   const [step, setStep] = useState<Step>(1);
   const [userId, setUserId] = useState(initialUserId);
