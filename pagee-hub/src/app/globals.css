@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Nunito:wght@400;600;700;800&family=Poppins:wght@500;600;700;800&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #0b1c30;
+  --surface: #f8f9ff;
+  --surface-low: #eff4ff;
+  --surface-lowest: #ffffff;
+  --primary: #22c55e;
+  --radius-xl: 1.5rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", "Poppins", "Nunito", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at 0% 0%, #ecfff3, var(--surface) 28%),
+    linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
+  color: var(--foreground);
+  font-family: "Inter", "Poppins", "Nunito", sans-serif;
+}
+
+.surface-card {
+  background: var(--surface-lowest);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 40px rgba(11, 28, 48, 0.08);
+}
+
+.green-btn {
+  background: linear-gradient(120deg, #22c55e, #1cad4f);
+  color: #052f13;
+  border-radius: 9999px;
+  font-weight: 700;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.green-btn:hover {
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 16px 35px rgba(34, 197, 94, 0.34);
+}
