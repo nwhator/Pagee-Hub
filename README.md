@@ -1,0 +1,74 @@
+# Pagee Hub
+
+Pagee Hub is a mobile-first, full-stack one-page business profile generator for entrepreneurs.
+
+## Stack
+
+- Next.js 16 (App Router)
+- TailwindCSS 4
+- Supabase (PostgreSQL + Auth + Storage)
+- Stripe (subscription billing)
+
+## Key Routes
+
+- `/` landing page
+- `/signup`, `/login`, `/forgot-password`, `/reset-password`
+- `/dashboard` page creator with live preview
+- `/b/[subdomain]` public business page
+- `/analytics`, `/plans`, `/billing`, `/profile`, `/reviews`, `/support`
+
+## API Routes
+
+- `/api/auth/signup`
+- `/api/auth/login`
+- `/api/business/create`
+- `/api/business/update`
+- `/api/business/delete`
+- `/api/reviews/create`
+- `/api/reviews/update`
+- `/api/reviews/delete`
+- `/api/analytics/record`
+- `/api/analytics/summary`
+- `/api/subscription/create`
+- `/api/subscription/update`
+- `/api/subscription/cancel`
+- `/api/subscription/pricing`
+- `/api/subscription/webhook`
+
+## Supabase Schema
+
+Run SQL from `supabase/schema.sql` in your Supabase SQL editor.
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` and fill in values.
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `NEXT_PUBLIC_SITE_URL`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRO_MONTHLY_PRICE_ID`
+- `STRIPE_PRO_YEARLY_PRICE_ID`
+
+## Subscription Rules
+
+- Free: $0 with baseline limits (subdomain page, up to 3 gallery images/reviews, basic analytics)
+- Pro: $10/month or $100/year
+- First-time monthly Pro purchase enforces a minimum 3-month upfront payment on the first invoice
+- Optional regional pricing applies a discount multiplier by country while preserving USD reference pricing
+- Downgrade/cancel keeps Pro access until `current_period_end`
+
+## Run
+
+```bash
+npm install
+npm run dev
+```
+
+## Future Placeholders Included
+
+- Template marketplace
+- Marketing tools
+- Custom domain management
