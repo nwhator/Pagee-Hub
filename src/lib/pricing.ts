@@ -11,6 +11,11 @@ export type FeatureLimits = {
   hasAdvancedAnalytics: boolean;
 };
 
+export type LocalizedCurrency = {
+  currency: "USD" | "NGN" | "KES" | "GHS" | "ZAR";
+  fxRate: number;
+};
+
 const REGION_DISCOUNTS: Record<string, number> = {
   IN: 0.6,
   NG: 0.6,
@@ -24,6 +29,13 @@ const REGION_DISCOUNTS: Record<string, number> = {
   BR: 0.75,
   ZA: 0.75,
   MX: 0.8
+};
+
+const CURRENCY_BY_COUNTRY: Record<string, LocalizedCurrency> = {
+  NG: { currency: "NGN", fxRate: 1500 },
+  KE: { currency: "KES", fxRate: 132 },
+  GH: { currency: "GHS", fxRate: 15.5 },
+  ZA: { currency: "ZAR", fxRate: 18.5 }
 };
 
 export const BASE_PRICING_USD = {
@@ -85,4 +97,14 @@ export function getLocalizedPricingUsd(countryCode: string) {
 
 export function usdToCents(value: number) {
   return Math.round(value * 100);
+}
+
+export function convertUsdToLocal(usdAmount: number, countryCode: string) {
+  const currencyData = CURRENCY_BY_COUNTRY[countryCode] ?? { currency: "USD", fxRate: 1 };
+
+  return {
+    currency: currencyData.currency,
+    amount: Number((usdAmount * currencyData.fxRate).toFixed(2)),
+    fxRate: currencyData.fxRate
+  };
 }

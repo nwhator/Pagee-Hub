@@ -13,7 +13,9 @@ async function upsertSubscriptionForUser(payload: {
   userId: string;
   plan: "free" | "pro";
   billingCycle: "monthly" | "yearly";
+  provider: "stripe" | "flutterwave";
   status: "active" | "canceled" | "past_due";
+  providerTransactionId?: string | null;
   stripeCustomerId: string | null;
   stripeSubscriptionId: string | null;
   currentPeriodEnd: string | null;
@@ -29,7 +31,9 @@ async function upsertSubscriptionForUser(payload: {
     user_id: payload.userId,
     plan: payload.plan,
     billing_cycle: payload.billingCycle,
+    provider: payload.provider,
     status: payload.status,
+    provider_transaction_id: payload.providerTransactionId ?? payload.stripeSubscriptionId,
     stripe_customer_id: payload.stripeCustomerId,
     stripe_subscription_id: payload.stripeSubscriptionId,
     current_period_end: payload.currentPeriodEnd
@@ -84,7 +88,9 @@ export async function POST(request: Request) {
         userId,
         plan: "pro",
         billingCycle: session.metadata?.billing_cycle === "yearly" ? "yearly" : "monthly",
+        provider: "stripe",
         status: "active",
+        providerTransactionId: typeof session.subscription === "string" ? session.subscription : session.subscription?.id || null,
         stripeCustomerId: typeof session.customer === "string" ? session.customer : session.customer.id,
         stripeSubscriptionId: typeof session.subscription === "string" ? session.subscription : session.subscription?.id || null,
         currentPeriodEnd: null,
@@ -116,7 +122,9 @@ export async function POST(request: Request) {
         userId,
         plan: subscription.cancel_at_period_end ? "pro" : "pro",
         billingCycle: subscription.items.data[0]?.price.recurring?.interval === "year" ? "yearly" : "monthly",
+        provider: "stripe",
         status: mapStripeStatus(subscription.status),
+        providerTransactionId: subscription.id,
         stripeCustomerId: typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id,
         stripeSubscriptionId: subscription.id,
         currentPeriodEnd: periodEnd

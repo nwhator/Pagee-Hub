@@ -13,6 +13,7 @@ Pagee Hub is a mobile-first, full-stack one-page business profile generator for 
 
 - `/` landing page
 - `/signup`, `/login`, `/forgot-password`, `/reset-password`
+- `/onboarding` multi-step setup flow
 - `/dashboard` page creator with live preview
 - `/template-library` template selection workspace
 - `/b/[subdomain]` public business page
@@ -22,9 +23,16 @@ Pagee Hub is a mobile-first, full-stack one-page business profile generator for 
 
 - `/api/auth/signup`
 - `/api/auth/login`
+- `/api/auth/logout`
+- `/api/auth/session`
+- `/api/auth/forgot-password`
+- `/api/auth/reset-password`
 - `/api/business/create`
 - `/api/business/update`
 - `/api/business/delete`
+- `/api/business/me`
+- `/api/business/check-subdomain`
+- `/api/business/subdomain`
 - `/api/reviews/create`
 - `/api/reviews/update`
 - `/api/reviews/delete`
@@ -35,6 +43,8 @@ Pagee Hub is a mobile-first, full-stack one-page business profile generator for 
 - `/api/subscription/cancel`
 - `/api/subscription/pricing`
 - `/api/subscription/webhook`
+- `/api/subscription/flutterwave/initiate`
+- `/api/subscription/webhook/flutterwave`
 
 ## Supabase Schema
 
@@ -52,6 +62,15 @@ Copy `.env.example` to `.env.local` and fill in values.
 - `STRIPE_WEBHOOK_SECRET`
 - `STRIPE_PRO_MONTHLY_PRICE_ID`
 - `STRIPE_PRO_YEARLY_PRICE_ID`
+- `FLUTTERWAVE_PUBLIC_KEY`
+- `FLUTTERWAVE_SECRET_KEY`
+- `FLUTTERWAVE_WEBHOOK_HASH`
+- `NEXT_PUBLIC_ROOT_DOMAIN`
+
+## Wildcard Subdomains
+
+- Wildcard routing is handled by [src/middleware.ts](src/middleware.ts)
+- Configure DNS `*.pagee.org` to Vercel and set root domain env as needed
 
 ## Subscription Rules
 
@@ -59,6 +78,7 @@ Copy `.env.example` to `.env.local` and fill in values.
 - Pro: $10/month or $100/year
 - First-time monthly Pro purchase enforces a minimum 3-month upfront payment on the first invoice
 - Optional regional pricing applies a discount multiplier by country while preserving USD reference pricing
+- Flutterwave is available as an additional payment provider for local/African checkout flows
 - Downgrade/cancel keeps Pro access until `current_period_end`
 
 ## Template To Publish Flow

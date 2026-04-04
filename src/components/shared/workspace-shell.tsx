@@ -24,6 +24,9 @@ export function WorkspaceShell({ title, children }: { title: string; children: R
                 {link.label}
               </Link>
             ))}
+            <Link href="/api/auth/logout" className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white">
+              Logout
+            </Link>
           </nav>
         </div>
       </header>

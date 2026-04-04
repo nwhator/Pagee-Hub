@@ -35,6 +35,7 @@ const proFeatures = [
 
 export function PricingCards() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
+  const [provider, setProvider] = useState<"stripe" | "flutterwave">("stripe");
   const [country, setCountry] = useState("US");
   const [pricing, setPricing] = useState<PricingResponse | null>(null);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -65,7 +66,8 @@ export function PricingCards() {
     setCheckoutLoading(true);
     setMessage("");
 
-    const res = await fetch("/api/subscription/create", {
+    const endpoint = provider === "stripe" ? "/api/subscription/create" : "/api/subscription/flutterwave/initiate";
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -131,6 +133,14 @@ export function PricingCards() {
       </div>
 
       <div className="surface-card grid gap-4 p-6 md:grid-cols-2">
+        <label className="space-y-2 text-sm font-semibold text-slate-700">
+          Payment provider
+          <select value={provider} onChange={(event) => setProvider(event.target.value as "stripe" | "flutterwave")} className="w-full rounded-xl bg-slate-100 px-3 py-3">
+            <option value="stripe">Stripe (Global)</option>
+            <option value="flutterwave">Flutterwave (Africa/Local)</option>
+          </select>
+        </label>
+
         <label className="space-y-2 text-sm font-semibold text-slate-700">
           Billing cycle
           <select value={billingCycle} onChange={(event) => setBillingCycle(event.target.value as "monthly" | "yearly")} className="w-full rounded-xl bg-slate-100 px-3 py-3">

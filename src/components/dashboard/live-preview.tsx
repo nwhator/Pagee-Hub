@@ -9,7 +9,7 @@ export function LivePreview({ values }: { values: BusinessFormValues }) {
       </div>
       <p className="mt-4 text-sm text-slate-600">{values.about || "Describe your business, your mission, and why customers should choose you."}</p>
       <div className="mt-4 grid grid-cols-2 gap-2 text-sm">
-        <button className="rounded-xl bg-green-500 px-3 py-2 font-semibold text-green-950">WhatsApp</button>
+        <button className="rounded-xl px-3 py-2 font-semibold text-white" style={{ backgroundColor: values.accent_color || values.brand_color || "#22C55E" }}>WhatsApp</button>
         <button className="rounded-xl bg-slate-950 px-3 py-2 font-semibold text-white">Call</button>
       </div>
       <p className="mt-3 text-xs text-slate-500">{values.custom_domain || `${values.subdomain || "yourbusiness"}.pagee.org`}</p>

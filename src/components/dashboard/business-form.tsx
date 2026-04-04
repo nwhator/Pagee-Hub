@@ -14,6 +14,7 @@ export type BusinessFormValues = {
   services: { name: string; price: string }[];
   show_branding: boolean;
   brand_color: string;
+  accent_color: string;
 };
 
 export function BusinessForm({
@@ -52,6 +53,8 @@ export function BusinessForm({
         <input className="rounded-xl bg-slate-100 px-4 py-3" value={values.instagram} onChange={(e) => onChange({ ...values, instagram: e.target.value })} placeholder="Instagram" />
         <label className="text-sm font-semibold">Brand color</label>
         <input type="color" value={values.brand_color} onChange={(e) => onChange({ ...values, brand_color: e.target.value })} className="h-12 w-full rounded-xl" />
+        <label className="text-sm font-semibold">Accent color</label>
+        <input type="color" value={values.accent_color} onChange={(e) => onChange({ ...values, accent_color: e.target.value })} className="h-12 w-full rounded-xl" />
         <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
           <input
             type="checkbox"

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { validateAuth } from "@/lib/validation";
 import { hasSupabaseEnv, supabaseAuth } from "@/lib/supabase";
+import { withAuthCookies } from "@/lib/session";
 
 export async function POST(request: Request) {
   if (!hasSupabaseEnv) {
@@ -22,5 +23,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: result.data }, { status: result.status });
   }
 
-  return NextResponse.json(result.data);
+  const response = NextResponse.json({
+    user: result.data?.user ?? null,
+    message: "Login successful"
+  });
+
+  return withAuthCookies(response, result.data ?? {});
 }

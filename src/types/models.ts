@@ -15,6 +15,7 @@ export interface BusinessPage {
   services: { name: string; price: string; description?: string }[];
   show_branding: boolean;
   brand_color: string;
+  accent_color: string;
   logo_url: string | null;
   media_urls: string[];
   created_at: string;
@@ -43,6 +44,8 @@ export interface Subscription {
   user_id: string;
   plan: PlanType;
   billing_cycle: BillingCycle;
+  provider: "stripe" | "flutterwave";
+  provider_transaction_id: string | null;
   status: "active" | "canceled" | "past_due";
   stripe_customer_id: string | null;
   stripe_subscription_id: string | null;

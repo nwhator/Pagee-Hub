@@ -43,4 +43,19 @@ export async function supabaseAuth(path: "signup" | "token", body: unknown) {
   return { ok: response.ok, status: response.status, data };
 }
 
+export async function supabaseAuthRequest(path: string, options?: { method?: "GET" | "POST" | "PUT"; body?: unknown; accessToken?: string }) {
+  const response = await fetch(`${supabaseUrl}/auth/v1/${path}`, {
+    method: options?.method ?? "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: supabaseAnonKey,
+      ...(options?.accessToken ? { Authorization: `Bearer ${options.accessToken}` } : {})
+    },
+    body: options?.body ? JSON.stringify(options.body) : undefined
+  });
+
+  const data = await response.json().catch(() => null);
+  return { ok: response.ok, status: response.status, data };
+}
+
 export const hasSupabaseEnv = Boolean(supabaseUrl && supabaseAnonKey);

@@ -29,6 +29,7 @@ export const pageTemplates: PageTemplate[] = [
         { name: "Automation Setup", price: "$350" }
       ],
       brand_color: "#0EA5A4",
+      accent_color: "#14B8A6",
       custom_domain: "",
       show_branding: true
     }
@@ -52,6 +53,7 @@ export const pageTemplates: PageTemplate[] = [
         { name: "Gift Packaging", price: "$15" }
       ],
       brand_color: "#B45309",
+      accent_color: "#D97706",
       custom_domain: "",
       show_branding: true
     }
@@ -75,6 +77,7 @@ export const pageTemplates: PageTemplate[] = [
         { name: "Social Design Kit", price: "$180" }
       ],
       brand_color: "#E11D48",
+      accent_color: "#F43F5E",
       custom_domain: "",
       show_branding: true
     }
@@ -98,6 +101,7 @@ export const pageTemplates: PageTemplate[] = [
         { name: "Product Design", price: "$600" }
       ],
       brand_color: "#1D4ED8",
+      accent_color: "#2563EB",
       custom_domain: "",
       show_branding: true
     }

@@ -34,6 +34,7 @@ export function validateBusiness(input: unknown, requireId = false): Result<{
   services: BusinessService[];
   show_branding: boolean;
   brand_color: string;
+  accent_color: string;
   logo_url: string;
   media_urls: string[];
 }> {
@@ -73,6 +74,7 @@ export function validateBusiness(input: unknown, requireId = false): Result<{
       services,
       show_branding: input.show_branding !== false,
       brand_color: asString(input.brand_color, "#22C55E"),
+      accent_color: asString(input.accent_color, "#16A34A"),
       logo_url: asString(input.logo_url),
       media_urls: Array.isArray(input.media_urls) ? input.media_urls.filter((item): item is string => typeof item === "string") : []
     }

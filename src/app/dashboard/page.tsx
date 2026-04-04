@@ -23,7 +23,8 @@ const defaults: BusinessFormValues = {
     { name: "Premium Package", price: "$99" }
   ],
   show_branding: true,
-  brand_color: "#22C55E"
+  brand_color: "#22C55E",
+  accent_color: "#16A34A"
 };
 
 export default function DashboardPage() {

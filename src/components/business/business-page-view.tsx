@@ -1,6 +1,8 @@
 import type { BusinessPage, Review } from "@/types/models";
 
 export function BusinessPageView({ page, reviews }: { page: BusinessPage; reviews: Review[] }) {
+  const accentColor = page.accent_color || page.brand_color || "#22C55E";
+
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6">
       <header className="rounded-3xl p-6 text-white" style={{ backgroundColor: page.brand_color || "#22C55E" }}>
@@ -12,7 +14,7 @@ export function BusinessPageView({ page, reviews }: { page: BusinessPage; review
         <h2 className="text-xl font-black">About</h2>
         <p className="mt-2 text-slate-700">{page.about}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          <a className="green-btn px-5 py-2" href={`https://wa.me/${page.whatsapp ?? ""}`}>WhatsApp</a>
+          <a className="rounded-full px-5 py-2 font-semibold text-white" style={{ backgroundColor: accentColor }} href={`https://wa.me/${page.whatsapp ?? ""}`}>WhatsApp</a>
           <a className="rounded-full bg-slate-950 px-5 py-2 font-semibold text-white" href={`tel:${page.phone ?? ""}`}>Call</a>
           <a className="rounded-full bg-slate-100 px-5 py-2 font-semibold" href={`https://instagram.com/${(page.instagram ?? "").replace("@", "")}`}>Instagram</a>
         </div>
@@ -22,7 +24,7 @@ export function BusinessPageView({ page, reviews }: { page: BusinessPage; review
         <h2 className="text-xl font-black">Services / Products</h2>
         <ul className="mt-3 space-y-2">
           {page.services.map((service) => (
-            <li key={`${service.name}-${service.price}`} className="flex items-center justify-between rounded-xl bg-slate-100 px-4 py-3">
+            <li key={`${service.name}-${service.price}`} className="flex items-center justify-between rounded-xl px-4 py-3" style={{ backgroundColor: `${accentColor}18` }}>
               <span className="font-semibold">{service.name}</span>
               <span className="text-slate-600">{service.price}</span>
             </li>

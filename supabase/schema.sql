@@ -22,6 +22,7 @@ create table if not exists "BusinessPages" (
   services jsonb not null default '[]'::jsonb,
   show_branding boolean not null default true,
   brand_color text not null default '#22C55E',
+  accent_color text not null default '#16A34A',
   logo_url text,
   media_urls text[] not null default '{}',
   created_at timestamptz not null default now(),
@@ -50,7 +51,9 @@ create table if not exists "Subscriptions" (
   user_id uuid not null references "Users" (id) on delete cascade,
   plan text not null check (plan in ('free', 'pro')),
   billing_cycle text not null check (billing_cycle in ('monthly', 'yearly')),
+  provider text not null default 'stripe' check (provider in ('stripe', 'flutterwave')),
   status text not null check (status in ('active', 'canceled', 'past_due')),
+  provider_transaction_id text,
   stripe_customer_id text,
   stripe_subscription_id text,
   current_period_end timestamptz,
@@ -63,8 +66,11 @@ create unique index if not exists subscriptions_user_id_idx on "Subscriptions" (
 alter table if exists "Users" add column if not exists country_code text;
 alter table if exists "BusinessPages" add column if not exists custom_domain text;
 alter table if exists "BusinessPages" add column if not exists show_branding boolean not null default true;
+alter table if exists "BusinessPages" add column if not exists accent_color text;
 alter table if exists "Subscriptions" add column if not exists plan text;
 alter table if exists "Subscriptions" add column if not exists billing_cycle text;
+alter table if exists "Subscriptions" add column if not exists provider text;
+alter table if exists "Subscriptions" add column if not exists provider_transaction_id text;
 alter table if exists "Subscriptions" add column if not exists stripe_customer_id text;
 alter table if exists "Subscriptions" add column if not exists stripe_subscription_id text;
 alter table if exists "Subscriptions" add column if not exists current_period_end timestamptz;
@@ -80,6 +86,14 @@ where billing_cycle is null;
 update "Subscriptions"
 set stripe_subscription_id = coalesce(stripe_subscription_id, stripe_id)
 where stripe_subscription_id is null;
+
+update "Subscriptions"
+set provider = coalesce(provider, 'stripe')
+where provider is null;
+
+update "BusinessPages"
+set accent_color = coalesce(accent_color, '#16A34A')
+where accent_color is null;
 
 create or replace function update_updated_at_column()
 returns trigger as $$
