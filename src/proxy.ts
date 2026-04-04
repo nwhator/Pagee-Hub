@@ -19,7 +19,7 @@ function extractSubdomain(hostname: string) {
   return parts[0];
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
