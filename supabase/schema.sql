@@ -75,17 +75,45 @@ alter table if exists "Subscriptions" add column if not exists stripe_customer_i
 alter table if exists "Subscriptions" add column if not exists stripe_subscription_id text;
 alter table if exists "Subscriptions" add column if not exists current_period_end timestamptz;
 
-update "Subscriptions"
-set plan = coalesce(plan, case when plan_type = 'pro' then 'pro' else 'free' end)
-where plan is null;
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'Subscriptions'
+      and column_name = 'plan_type'
+  ) then
+    execute 'update "Subscriptions"
+             set plan = coalesce(plan, case when plan_type = ''pro'' then ''pro'' else ''free'' end)
+             where plan is null';
+  else
+    update "Subscriptions"
+    set plan = coalesce(plan, 'free')
+    where plan is null;
+  end if;
+end
+$$;
 
 update "Subscriptions"
 set billing_cycle = coalesce(billing_cycle, 'monthly')
 where billing_cycle is null;
 
-update "Subscriptions"
-set stripe_subscription_id = coalesce(stripe_subscription_id, stripe_id)
-where stripe_subscription_id is null;
+do $$
+begin
+  if exists (
+    select 1
+    from information_schema.columns
+    where table_schema = 'public'
+      and table_name = 'Subscriptions'
+      and column_name = 'stripe_id'
+  ) then
+    execute 'update "Subscriptions"
+             set stripe_subscription_id = coalesce(stripe_subscription_id, stripe_id)
+             where stripe_subscription_id is null';
+  end if;
+end
+$$;
 
 update "Subscriptions"
 set provider = coalesce(provider, 'stripe')
