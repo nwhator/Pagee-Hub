@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Issue = {
   id: string;
@@ -35,23 +35,22 @@ export function IssuesBoard() {
     await loadIssues();
   }
 
-  useEffect(() => {
-    if (adminKey) {
-      void loadIssues();
-    }
-  }, [adminKey]);
-
   return (
     <section className="surface-card p-6">
       <h2 className="text-xl font-black">Issue Tracking</h2>
       <p className="mt-1 text-sm text-slate-600">Track and fix user-reported issues.</p>
-      <input
-        type="password"
-        value={adminKey}
-        onChange={(e) => setAdminKey(e.target.value)}
-        placeholder="Admin API key"
-        className="mt-4 w-full rounded-xl bg-slate-100 px-4 py-3"
-      />
+      <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto]">
+        <input
+          type="password"
+          value={adminKey}
+          onChange={(e) => setAdminKey(e.target.value)}
+          placeholder="Admin API key"
+          className="w-full rounded-xl bg-slate-100 px-4 py-3"
+        />
+        <button onClick={() => void loadIssues()} className="rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white">
+          Load Issues
+        </button>
+      </div>
 
       <div className="mt-4 space-y-3">
         {issues.map((issue) => (

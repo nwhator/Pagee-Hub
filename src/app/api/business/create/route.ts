@@ -13,9 +13,41 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const userId = parseUserIdFromRequest(request) || "00000000-0000-0000-0000-000000000000";
+  const userId = parseUserIdFromRequest(request);
+  if (!userId) {
+    return NextResponse.json({ error: "Missing x-user-id header" }, { status: 400 });
+  }
   const limits = await getFeatureLimitsForUser(userId);
   const payload = parsed.data;
+
+  const existingPageResult = await supabaseRest("BusinessPages", {
+    method: "GET",
+    useServiceRole: true,
+    query: `select=id&user_id=eq.${userId}&limit=1`
+  });
+
+  const existingPageId = existingPageResult.data?.[0]?.id as string | undefined;
+
+  if (existingPageId) {
+    const updateResult = await supabaseRest("BusinessPages", {
+      method: "PATCH",
+      useServiceRole: true,
+      query: `id=eq.${existingPageId}`,
+      body: {
+        ...payload,
+        custom_domain: payload.custom_domain || null,
+        show_branding: limits.canRemoveBranding ? payload.show_branding : true,
+        logo_url: payload.logo_url || null,
+        updated_at: new Date().toISOString()
+      }
+    });
+
+    if (!updateResult.ok) {
+      return NextResponse.json({ error: updateResult.data }, { status: updateResult.status });
+    }
+
+    return NextResponse.json(updateResult.data?.[0] ?? updateResult.data);
+  }
 
   const pageCountResult = await supabaseRest("BusinessPages", {
     method: "GET",

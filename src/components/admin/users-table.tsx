@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type UserRecord = {
   id: string;
@@ -50,24 +50,23 @@ export function UsersTable() {
     await loadUsers();
   }
 
-  useEffect(() => {
-    if (adminKey) {
-      void loadUsers();
-    }
-  }, [adminKey]);
-
   return (
     <section className="surface-card p-6">
       <h2 className="text-xl font-black">Track and Manage Users</h2>
       <p className="mt-1 text-sm text-slate-600">Set admin key, then view users, suspend, reactivate, or delete.</p>
 
-      <input
-        type="password"
-        value={adminKey}
-        onChange={(e) => setAdminKey(e.target.value)}
-        placeholder="Admin API key"
-        className="mt-4 w-full rounded-xl bg-slate-100 px-4 py-3"
-      />
+      <div className="mt-4 grid gap-2 sm:grid-cols-[1fr_auto]">
+        <input
+          type="password"
+          value={adminKey}
+          onChange={(e) => setAdminKey(e.target.value)}
+          placeholder="Admin API key"
+          className="w-full rounded-xl bg-slate-100 px-4 py-3"
+        />
+        <button onClick={() => void loadUsers()} className="rounded-xl bg-slate-900 px-4 py-3 text-sm font-semibold text-white">
+          Load Users
+        </button>
+      </div>
 
       {message ? <p className="mt-3 text-sm text-green-700">{message}</p> : null}
 

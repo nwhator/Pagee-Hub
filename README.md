@@ -14,6 +14,7 @@ Pagee Hub is a mobile-first, full-stack one-page business profile generator for 
 - `/` landing page
 - `/signup`, `/login`, `/forgot-password`, `/reset-password`
 - `/dashboard` page creator with live preview
+- `/template-library` template selection workspace
 - `/b/[subdomain]` public business page
 - `/analytics`, `/plans`, `/billing`, `/profile`, `/reviews`, `/support`
 
@@ -59,6 +60,14 @@ Copy `.env.example` to `.env.local` and fill in values.
 - First-time monthly Pro purchase enforces a minimum 3-month upfront payment on the first invoice
 - Optional regional pricing applies a discount multiplier by country while preserving USD reference pricing
 - Downgrade/cancel keeps Pro access until `current_period_end`
+
+## Template To Publish Flow
+
+1. Open `/template-library` and choose a template.
+2. Open `/dashboard` and apply a template.
+3. Enter your `User ID (UUID)` so ownership and plan limits are enforced.
+4. Save/Publish.
+5. View the generated page at `/b/[subdomain]`.
 
 ## Run
 

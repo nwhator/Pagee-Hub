@@ -13,7 +13,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const userId = parseUserIdFromRequest(request) || "00000000-0000-0000-0000-000000000000";
+  const userId = parseUserIdFromRequest(request);
+  if (!userId) {
+    return NextResponse.json({ error: "Missing x-user-id header" }, { status: 400 });
+  }
   const limits = await getFeatureLimitsForUser(userId);
   const { id, ...payload } = parsed.data;
 

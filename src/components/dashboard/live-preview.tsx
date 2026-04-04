@@ -12,7 +12,8 @@ export function LivePreview({ values }: { values: BusinessFormValues }) {
         <button className="rounded-xl bg-green-500 px-3 py-2 font-semibold text-green-950">WhatsApp</button>
         <button className="rounded-xl bg-slate-950 px-3 py-2 font-semibold text-white">Call</button>
       </div>
-      <p className="mt-4 text-xs text-slate-500">{values.subdomain || "yourbusiness"}.pagee.org</p>
+      <p className="mt-3 text-xs text-slate-500">{values.custom_domain || `${values.subdomain || "yourbusiness"}.pagee.org`}</p>
+      <p className="mt-1 text-xs text-slate-500">Branding: {values.show_branding ? "Visible" : "Removed (Pro)"}</p>
     </aside>
   );
 }
