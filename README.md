@@ -70,7 +70,7 @@ Copy `.env.example` to `.env.local` and fill in values.
 ## Wildcard Subdomains
 
 - Wildcard routing is handled by [src/middleware.ts](src/middleware.ts)
-- Configure DNS `*.pagee.org` to Vercel and set root domain env as needed
+- Configure DNS `*.pagee.hub` to Vercel and set root domain env as needed
 
 ## Subscription Rules
 

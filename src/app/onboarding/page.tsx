@@ -76,7 +76,7 @@ export default function OnboardingPage() {
       return;
     }
 
-    setMessage(`Success! Share link: https://${subdomain}.pagee.org`);
+    setMessage(`Success! Share link: https://${subdomain}.pagee.hub`);
     router.push("/dashboard");
   }
 

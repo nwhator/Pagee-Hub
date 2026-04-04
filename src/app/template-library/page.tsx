@@ -19,7 +19,7 @@ export default function TemplateLibraryPage() {
           <h2 className="mt-1 text-2xl font-black">{selected.name}</h2>
           <p className="mt-1 text-slate-600">Use this in Page Creator to publish your website.</p>
           <div className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
-            <p><span className="font-semibold">Subdomain:</span> {selected.defaultValues.subdomain}.pagee.org</p>
+            <p><span className="font-semibold">Subdomain:</span> {selected.defaultValues.subdomain}.pagee.hub</p>
             <p><span className="font-semibold">Brand color:</span> {selected.defaultValues.brand_color}</p>
           </div>
           <Link href={`/dashboard?template=${encodeURIComponent(selected.id)}`} className="green-btn mt-4 inline-flex px-4 py-2">

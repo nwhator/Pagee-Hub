@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const RESERVED_SUBDOMAINS = new Set(["www", "app", "api", "admin"]);
 
-function extractSubdomain(hostname: string) {
+function extractSubdomain(hostname: string, rootDomain: string) {
   const host = hostname.split(":")[0].toLowerCase();
 
   if (host.endsWith(".localhost")) {
@@ -14,9 +14,28 @@ function extractSubdomain(hostname: string) {
     return null;
   }
 
-  const parts = host.split(".");
-  if (parts.length < 3) return null;
-  return parts[0];
+  if (host.endsWith(".vercel.app")) {
+    return null;
+  }
+
+  if (!rootDomain) {
+    return null;
+  }
+
+  if (host === rootDomain || host === `www.${rootDomain}`) {
+    return null;
+  }
+
+  if (!host.endsWith(`.${rootDomain}`)) {
+    return null;
+  }
+
+  const subdomainPart = host.slice(0, -(rootDomain.length + 1));
+  if (!subdomainPart) {
+    return null;
+  }
+
+  return subdomainPart.includes(".") ? subdomainPart.split(".")[0] : subdomainPart;
 }
 
 export function proxy(request: NextRequest) {
@@ -32,7 +51,8 @@ export function proxy(request: NextRequest) {
   }
 
   const hostHeader = request.headers.get("host") || "";
-  const subdomain = extractSubdomain(hostHeader);
+  const rootDomain = (process.env.NEXT_PUBLIC_ROOT_DOMAIN || "pagee.hub").toLowerCase();
+  const subdomain = extractSubdomain(hostHeader, rootDomain);
 
   if (!subdomain || RESERVED_SUBDOMAINS.has(subdomain)) {
     return NextResponse.next();

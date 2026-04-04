@@ -12,7 +12,7 @@ export function LivePreview({ values }: { values: BusinessFormValues }) {
         <button className="rounded-xl px-3 py-2 font-semibold text-white" style={{ backgroundColor: values.accent_color || values.brand_color || "#22C55E" }}>WhatsApp</button>
         <button className="rounded-xl bg-slate-950 px-3 py-2 font-semibold text-white">Call</button>
       </div>
-      <p className="mt-3 text-xs text-slate-500">{values.custom_domain || `${values.subdomain || "yourbusiness"}.pagee.org`}</p>
+      <p className="mt-3 text-xs text-slate-500">{values.custom_domain || `${values.subdomain || "yourbusiness"}.pagee.hub`}</p>
       <p className="mt-1 text-xs text-slate-500">Branding: {values.show_branding ? "Visible" : "Removed (Pro)"}</p>
     </aside>
   );
