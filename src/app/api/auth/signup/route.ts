@@ -34,9 +34,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: getAuthErrorMessage(result.data) }, { status: result.status });
   }
 
+  const hasSession = Boolean(result.data?.access_token);
+  const message = hasSession
+    ? "Signup successful"
+    : "Account created. Check your email to verify your account before signing in.";
+
   const response = NextResponse.json({
     user: result.data?.user ?? null,
-    message: "Signup successful"
+    message,
+    requires_email_verification: !hasSession
   }, { status: 201 });
 
   return withAuthCookies(response, result.data ?? {});

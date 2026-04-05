@@ -33,7 +33,10 @@ function getAuthErrorDetails(error: unknown) {
             : "";
 
     if (code.includes("invalid_credentials") || rawMessage.toLowerCase().includes("invalid login credentials")) {
-      return { message: "Email or password is incorrect.", status: 401 };
+      return {
+        message: "Email or password is incorrect. If you just signed up, verify your email first.",
+        status: 401
+      };
     }
 
     if (code.includes("email_not_confirmed") || rawMessage.toLowerCase().includes("email not confirmed")) {

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -24,7 +25,9 @@ function toErrorMessage(input: unknown) {
 export function AuthForm({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [resendLoading, setResendLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [emailValue, setEmailValue] = useState("");
 
   const endpointMap: Record<AuthMode, string> = {
     signup: "/api/auth/signup",
@@ -63,6 +66,12 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       }
 
       if (mode === "signup") {
+        if (data?.requires_email_verification) {
+          setMessage(data?.message || "Account created. Check your email to verify your account before signing in.");
+          router.push("/login");
+          return;
+        }
+
         setMessage("Account created. Continue onboarding.");
         const userId = typeof data?.user?.id === "string" ? data.user.id : "";
         router.push(userId ? `/onboarding?user_id=${encodeURIComponent(userId)}` : "/onboarding");
@@ -81,11 +90,62 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     }
   }
 
+  async function resendVerificationEmail() {
+    if (!emailValue.includes("@")) {
+      setMessage("Enter your email first, then tap resend verification.");
+      return;
+    }
+
+    setResendLoading(true);
+    try {
+      const response = await fetch("/api/auth/resend-verification", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: emailValue })
+      });
+
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        setMessage(toErrorMessage(data?.error));
+        return;
+      }
+
+      setMessage(data?.message || "Verification email sent.");
+    } finally {
+      setResendLoading(false);
+    }
+  }
+
   return (
     <form action={onSubmit} className="surface-card mx-auto w-full max-w-md space-y-4 p-6">
-      <input name="email" type="email" required placeholder="you@business.com" className="w-full rounded-xl bg-slate-100 px-4 py-3" />
+      <input
+        name="email"
+        type="email"
+        required
+        placeholder="you@business.com"
+        value={emailValue}
+        onChange={(event) => setEmailValue(event.target.value)}
+        className="w-full rounded-xl bg-slate-100 px-4 py-3"
+      />
       {mode !== "forgot" && <input name="password" type="password" required placeholder="Password" className="w-full rounded-xl bg-slate-100 px-4 py-3" />}
       {mode === "reset" ? <input name="access_token" required placeholder="Reset access token" className="w-full rounded-xl bg-slate-100 px-4 py-3" /> : null}
+
+      {mode === "login" ? (
+        <div className="flex items-center justify-between text-sm">
+          <Link href="/forgot-password" className="font-semibold text-emerald-200 hover:text-emerald-100">
+            Forgot password?
+          </Link>
+          <button
+            type="button"
+            onClick={resendVerificationEmail}
+            disabled={resendLoading}
+            className="font-semibold text-emerald-200 hover:text-emerald-100 disabled:opacity-60"
+          >
+            {resendLoading ? "Sending..." : "Resend verification"}
+          </button>
+        </div>
+      ) : null}
+
       <button type="submit" disabled={loading} className="green-btn w-full px-6 py-3 disabled:opacity-50">
         {loading ? "Please wait..." : mode === "signup" ? "Create Account" : mode === "login" ? "Sign In" : mode === "forgot" ? "Send Reset Link" : "Update Password"}
       </button>
