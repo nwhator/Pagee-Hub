@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { hasSupabaseEnv, supabaseAuth } from "@/lib/supabase";
 import { withAuthCookies } from "@/lib/session";
+import { ensureUserProfile } from "@/lib/user-profile";
 
 type AuthErrorShape = {
   code?: string;
@@ -81,6 +82,15 @@ export async function POST(request: Request) {
     const authError = getAuthErrorDetails(result.data);
     const status = result.status >= 500 ? result.status : authError.status;
     return NextResponse.json({ error: authError.message }, { status });
+  }
+
+  const synced = await ensureUserProfile({
+    id: result.data?.user?.id,
+    email: result.data?.user?.email
+  });
+
+  if (!synced.ok) {
+    return NextResponse.json({ error: "Signed in, but failed to prepare your account profile. Please try again." }, { status: 500 });
   }
 
   const response = NextResponse.json({

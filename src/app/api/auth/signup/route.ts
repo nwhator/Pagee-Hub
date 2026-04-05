@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { validateAuth } from "@/lib/validation";
 import { hasSupabaseEnv, supabaseAuth } from "@/lib/supabase";
 import { withAuthCookies } from "@/lib/session";
+import { ensureUserProfile } from "@/lib/user-profile";
 
 function getAuthErrorMessage(error: unknown) {
   if (typeof error === "string") {
@@ -32,6 +33,17 @@ export async function POST(request: Request) {
   const result = await supabaseAuth("signup", { email, password });
   if (!result.ok) {
     return NextResponse.json({ error: getAuthErrorMessage(result.data) }, { status: result.status });
+  }
+
+  if (result.data?.user?.id && result.data?.user?.email) {
+    const synced = await ensureUserProfile({
+      id: result.data.user.id,
+      email: result.data.user.email
+    });
+
+    if (!synced.ok) {
+      return NextResponse.json({ error: "Account created, but failed to prepare your profile. Please sign in again." }, { status: 500 });
+    }
   }
 
   const hasSession = Boolean(result.data?.access_token);

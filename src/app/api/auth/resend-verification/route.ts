@@ -35,6 +35,7 @@ export async function POST(request: Request) {
     body: {
       type: "signup",
       email,
+      email_redirect_to: emailRedirectTo,
       options: {
         emailRedirectTo
       }

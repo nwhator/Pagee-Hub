@@ -22,6 +22,10 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: "Pagee Hub",
   description: "One-page business profile generator for entrepreneurs",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg"
+  }
 };
 
 export default function RootLayout({
