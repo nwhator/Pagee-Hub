@@ -5,6 +5,22 @@ import { useRouter } from "next/navigation";
 
 type AuthMode = "signup" | "login" | "forgot" | "reset";
 
+function toErrorMessage(input: unknown) {
+  if (typeof input === "string") {
+    return input;
+  }
+
+  if (input && typeof input === "object") {
+    const value = input as { message?: unknown; msg?: unknown; error?: unknown; error_description?: unknown };
+    if (typeof value.message === "string") return value.message;
+    if (typeof value.msg === "string") return value.msg;
+    if (typeof value.error === "string") return value.error;
+    if (typeof value.error_description === "string") return value.error_description;
+  }
+
+  return "Unable to complete request.";
+}
+
 export function AuthForm({ mode }: { mode: AuthMode }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -42,7 +58,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setMessage(data?.error?.message || data?.error || "Unable to complete request.");
+        setMessage(toErrorMessage(data?.error));
         return;
       }
 
