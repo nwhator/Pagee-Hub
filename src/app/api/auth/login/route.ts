@@ -1,21 +1,55 @@
 import { NextResponse } from "next/server";
-import { validateAuth } from "@/lib/validation";
 import { hasSupabaseEnv, supabaseAuth } from "@/lib/supabase";
 import { withAuthCookies } from "@/lib/session";
 
-function getAuthErrorMessage(error: unknown) {
+type AuthErrorShape = {
+  code?: string;
+  error_code?: string;
+  message?: string;
+  msg?: string;
+  error_description?: string;
+};
+
+function getAuthErrorDetails(error: unknown) {
+  const fallback = {
+    message: "Unable to sign in. Please verify your email and password.",
+    status: 400
+  };
+
   if (typeof error === "string") {
-    return error;
+    return { message: error, status: 400 };
   }
 
   if (error && typeof error === "object") {
-    const candidate = error as { message?: unknown; msg?: unknown; error_description?: unknown };
-    if (typeof candidate.message === "string") return candidate.message;
-    if (typeof candidate.msg === "string") return candidate.msg;
-    if (typeof candidate.error_description === "string") return candidate.error_description;
+    const candidate = error as AuthErrorShape;
+    const code = (candidate.error_code || candidate.code || "").toLowerCase();
+    const rawMessage =
+      typeof candidate.message === "string"
+        ? candidate.message
+        : typeof candidate.msg === "string"
+          ? candidate.msg
+          : typeof candidate.error_description === "string"
+            ? candidate.error_description
+            : "";
+
+    if (code.includes("invalid_credentials") || rawMessage.toLowerCase().includes("invalid login credentials")) {
+      return { message: "Email or password is incorrect.", status: 401 };
+    }
+
+    if (code.includes("email_not_confirmed") || rawMessage.toLowerCase().includes("email not confirmed")) {
+      return { message: "Please verify your email before signing in.", status: 401 };
+    }
+
+    if (code.includes("too_many") || rawMessage.toLowerCase().includes("too many requests")) {
+      return { message: "Too many login attempts. Please try again in a few minutes.", status: 429 };
+    }
+
+    if (rawMessage) {
+      return { message: rawMessage, status: 400 };
+    }
   }
 
-  return "Unable to sign in. Please verify your email and password.";
+  return fallback;
 }
 
 export async function POST(request: Request) {
@@ -23,19 +57,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Supabase is not configured" }, { status: 503 });
   }
 
-  const parsed = validateAuth(await request.json());
-  if (!parsed.success) {
-    return NextResponse.json({ error: parsed.error }, { status: 400 });
+  const payload = await request.json();
+  const email = typeof payload?.email === "string" ? payload.email.trim() : "";
+  const password = typeof payload?.password === "string" ? payload.password : "";
+
+  if (!email.includes("@")) {
+    return NextResponse.json({ error: "Invalid email" }, { status: 400 });
   }
 
-  const { email, password } = parsed.data;
+  if (!password) {
+    return NextResponse.json({ error: "Password is required" }, { status: 400 });
+  }
+
   const result = await supabaseAuth("token", {
     email,
     password,
     grant_type: "password"
   });
   if (!result.ok) {
-    return NextResponse.json({ error: getAuthErrorMessage(result.data) }, { status: result.status });
+    const authError = getAuthErrorDetails(result.data);
+    const status = result.status >= 500 ? result.status : authError.status;
+    return NextResponse.json({ error: authError.message }, { status });
   }
 
   const response = NextResponse.json({
