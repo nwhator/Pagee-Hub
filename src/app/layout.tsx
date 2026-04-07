@@ -42,7 +42,11 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
 
-        <script src="http://real-timee.vercel.app/widget.js" data-site-token="rtw_e425780bc0364f1c90ae062d37dce795"></script>
+        <Script
+  src="https://real-timee.vercel.app/widget.js"
+  data-site-token="rtw_e425780bc0364f1c90ae062d37dce795"
+  strategy="lazyOnload"
+/>
       </body>
     </html>
   );
