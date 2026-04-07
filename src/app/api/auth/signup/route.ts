@@ -30,7 +30,12 @@ export async function POST(request: Request) {
   }
 
   const { email, password } = parsed.data;
-  const result = await supabaseAuth("signup", { email, password });
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  const result = await supabaseAuth("signup", {
+    email,
+    password,
+    options: { emailRedirectTo: `${siteUrl}/auth/callback` },
+  });
   if (!result.ok) {
     return NextResponse.json({ error: getAuthErrorMessage(result.data) }, { status: result.status });
   }
