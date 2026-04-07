@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Nunito, Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -38,7 +39,14 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${poppins.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <Script
+          src="http://real-timee.vercel.app/widget.js"
+          data-site-token="rtw_4593295248404667a095cfea36818c0c"
+          strategy="lazyOnload"
+        />
+      </body>
     </html>
   );
 }
