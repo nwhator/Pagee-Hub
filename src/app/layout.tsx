@@ -42,7 +42,7 @@ export default function RootLayout({
         {children}
 
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script src="https://real-timee.vercel.app/widget.js" data-site-token="rtw_e425780bc0364f1c90ae062d37dce795"></script>
+        <script src="https://real-timee.vercel.app/widget.js" data-site-token="rtw_e425780bc0364f1c90ae062d37dce795" data-brand-color="#22C55E"></script>
       </body>
     </html>
   );
