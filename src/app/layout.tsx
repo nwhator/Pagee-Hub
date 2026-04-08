@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, Nunito, Poppins } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,11 +41,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
 
-        <Script
-  src="https://real-timee.vercel.app/widget.js"
-  data-site-token="rtw_e425780bc0364f1c90ae062d37dce795"
-  strategy="lazyOnload"
-/>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://real-timee.vercel.app/widget.js" data-site-token="rtw_e425780bc0364f1c90ae062d37dce795"></script>
       </body>
     </html>
   );
