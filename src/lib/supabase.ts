@@ -39,7 +39,8 @@ export async function supabaseAuth(
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      apikey: supabaseAnonKey
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`
     },
     body: JSON.stringify(body)
   });
