@@ -1,13 +1,21 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { NextResponse } from "next/server";
 import { sessionCookieName } from "@/lib/session";
 import { hasSupabaseEnv, supabaseAuthRequest } from "@/lib/supabase";
 
-export async function GET(request: NextRequest) {
+function getCookieValue(cookieHeader: string, name: string) {
+  return cookieHeader
+    .split(";")
+    .map((item) => item.trim())
+    .find((entry) => entry.startsWith(`${name}=`))
+    ?.split("=")[1];
+}
+
+export async function GET(request: Request) {
   if (!hasSupabaseEnv) {
     return NextResponse.json({ error: "Supabase is not configured" }, { status: 503 });
   }
 
-  const token = request.cookies?.get(sessionCookieName)?.value;
+  const token = getCookieValue(request.headers.get("cookie") || "", sessionCookieName);
 
   if (!token) {
     return NextResponse.json({ authenticated: false, user: null });

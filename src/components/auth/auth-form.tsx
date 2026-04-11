@@ -81,7 +81,11 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 
       if (mode === "login") {
         const nextPath = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("next") : null;
-        router.push(nextPath || "/dashboard");
+        if (typeof window !== "undefined") {
+          window.location.href = nextPath || "/dashboard";
+        } else {
+          router.push(nextPath || "/dashboard");
+        }
         return;
       }
 

@@ -46,6 +46,7 @@ export default function OnboardingPage() {
 
     const res = await fetch("/api/business/create", {
       method: "POST",
+      credentials: "same-origin",
       headers: {
         "Content-Type": "application/json",
         "x-user-id": userId

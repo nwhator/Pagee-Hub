@@ -73,11 +73,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Password is required" }, { status: 400 });
   }
 
-  const result = await supabaseAuth(
-    "token",
-    { email, password },
-    { grant_type: "password" }
-  );
+  const result = await supabaseAuth("token", {
+    email,
+    password,
+    grant_type: "password"
+  });
   if (!result.ok) {
     const authError = getAuthErrorDetails(result.data);
     const status = result.status >= 500 ? result.status : authError.status;

@@ -18,17 +18,16 @@ export function parseUserIdFromRequest(request: Request) {
   return uuidRegex.test(userId) ? userId : null;
 }
 
-export async function resolveUserIdFromRequest(request: Request) {
-  const requestWithCookies = request as Request & {
-    cookies?: {
-      get(name: string): { value?: string } | undefined;
-    };
-  };
-
-  const sessionToken = requestWithCookies.cookies?.get("pagee_session")?.value ?? request.headers.get("cookie")?.split(";")
+function getCookieValue(cookieHeader: string, name: string) {
+  return cookieHeader
+    .split(";")
     .map((item) => item.trim())
-    .find((entry) => entry.startsWith("pagee_session="))
+    .find((entry) => entry.startsWith(`${name}=`))
     ?.split("=")[1];
+}
+
+export async function resolveUserIdFromRequest(request: Request) {
+  const sessionToken = getCookieValue(request.headers.get("cookie") || "", "pagee_session");
 
   if (sessionToken) {
     const auth = await supabaseAuthRequest("user", {
