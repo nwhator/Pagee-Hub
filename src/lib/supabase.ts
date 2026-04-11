@@ -35,14 +35,33 @@ export async function supabaseAuth(
   queryParams?: Record<string, string>
 ) {
   const query = queryParams ? `?${new URLSearchParams(queryParams).toString()}` : "";
+  const isTokenRequest = path === "token";
+  const headers: Record<string, string> = {
+    apikey: supabaseAnonKey,
+    Authorization: `Bearer ${supabaseAnonKey}`
+  };
+
+  let requestBody: BodyInit | undefined;
+  if (isTokenRequest) {
+    headers["Content-Type"] = "application/x-www-form-urlencoded";
+    if (body && typeof body === "object" && !Array.isArray(body)) {
+      const form = new URLSearchParams();
+      for (const [key, value] of Object.entries(body)) {
+        if (value !== undefined && value !== null) {
+          form.append(key, String(value));
+        }
+      }
+      requestBody = form.toString();
+    }
+  } else {
+    headers["Content-Type"] = "application/json";
+    requestBody = JSON.stringify(body);
+  }
+
   const response = await fetch(`${supabaseUrl}/auth/v1/${path}${query}`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      apikey: supabaseAnonKey,
-      Authorization: `Bearer ${supabaseAnonKey}`
-    },
-    body: JSON.stringify(body)
+    headers,
+    body: requestBody
   });
 
   const data = await response.json().catch(() => null);
