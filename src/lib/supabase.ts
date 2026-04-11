@@ -52,16 +52,21 @@ export async function supabaseAuth(
 }
 
 export async function supabaseTokenLogin(email: string, password: string) {
-  const body = `grant_type=password&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+  const params = new URLSearchParams({
+    grant_type: "password",
+    email,
+    password
+  });
 
   const response = await fetch(`${supabaseUrl}/auth/v1/token`, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
       "Accept": "application/json",
-      apikey: supabaseAnonKey
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`
     },
-    body
+    body: params
   });
 
   const data = await response.json().catch(() => null);
@@ -69,7 +74,7 @@ export async function supabaseTokenLogin(email: string, password: string) {
     console.error("Supabase token login failed", {
       status: response.status,
       headers: response.headers.get("content-type"),
-      body,
+      body: params.toString(),
       data
     });
   }
