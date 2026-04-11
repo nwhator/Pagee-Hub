@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Valid email is required" }, { status: 400 });
   }
 
-  const emailRedirectTo = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/login`;
+  const emailRedirectTo = `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/auth/callback`;
 
   const result = await supabaseAuthRequest("resend", {
     method: "POST",

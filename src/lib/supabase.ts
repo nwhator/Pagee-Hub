@@ -29,8 +29,13 @@ export async function supabaseRest(table: string, options: RequestOptions = {}) 
   return { ok: response.ok, status: response.status, data };
 }
 
-export async function supabaseAuth(path: "signup" | "token", body: unknown) {
-  const response = await fetch(`${supabaseUrl}/auth/v1/${path}`, {
+export async function supabaseAuth(
+  path: "signup" | "token",
+  body: unknown,
+  queryParams?: Record<string, string>
+) {
+  const query = queryParams ? `?${new URLSearchParams(queryParams).toString()}` : "";
+  const response = await fetch(`${supabaseUrl}/auth/v1/${path}${query}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
