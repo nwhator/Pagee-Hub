@@ -73,8 +73,10 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 
       if (mode === "signup") {
         if (data?.requires_email_verification) {
-          setMessage(data?.message || "Account created. Check your email to verify your account before signing in.");
-          router.push("/login");
+          setMessage(
+            data?.message ||
+              "Account created. A verification email has been sent. Check your inbox and then sign in."
+          );
           return;
         }
 
