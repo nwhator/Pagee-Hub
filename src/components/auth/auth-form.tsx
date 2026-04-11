@@ -67,7 +67,11 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setMessage(toErrorMessage(data?.error ?? data?.details ?? response.statusText));
+        const errorPayload = data ?? { status: response.status, statusText: response.statusText };
+        const errorText = data?.error
+          ? `${toErrorMessage(data.error)} — ${JSON.stringify(errorPayload)}`
+          : toErrorMessage(errorPayload);
+        setMessage(errorText);
         return;
       }
 
