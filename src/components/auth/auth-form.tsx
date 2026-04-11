@@ -67,7 +67,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        setMessage(toErrorMessage(data?.error));
+        setMessage(toErrorMessage(data?.error ?? data?.details ?? response.statusText));
         return;
       }
 
@@ -97,6 +97,10 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       }
 
       setMessage(data?.message || "Request completed.");
+    } catch (error) {
+      console.error("Auth request failed", error);
+      const messageText = toErrorMessage(error) || "Unable to connect to the auth server. Please try again.";
+      setMessage(`Unable to connect to the auth server. ${messageText}`);
     } finally {
       setLoading(false);
     }
@@ -124,6 +128,9 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
       }
 
       setMessage(data?.message || "Verification email sent.");
+    } catch (error) {
+      console.error("Resend verification failed", error);
+      setMessage("Unable to send verification email. Please try again.");
     } finally {
       setResendLoading(false);
     }
