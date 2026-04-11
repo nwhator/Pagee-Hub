@@ -33,6 +33,13 @@ function getAuthErrorDetails(error: unknown) {
             ? candidate.error_description
             : "";
 
+    if (code.includes("unsupported_grant_type") || rawMessage.toLowerCase().includes("unsupported_grant_type")) {
+      return {
+        message: "Login failed because the auth grant type is unsupported. This is a server-side auth request issue.",
+        status: 400
+      };
+    }
+
     if (code.includes("invalid_credentials") || rawMessage.toLowerCase().includes("invalid login credentials")) {
       return {
         message: "Email or password is incorrect.",

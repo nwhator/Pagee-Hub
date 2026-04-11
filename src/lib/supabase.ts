@@ -37,13 +37,13 @@ export async function supabaseAuth(
   const query = queryParams ? `?${new URLSearchParams(queryParams).toString()}` : "";
   const isTokenRequest = path === "token";
   const headers: Record<string, string> = {
-    apikey: supabaseAnonKey,
-    Authorization: `Bearer ${supabaseAnonKey}`
+    apikey: supabaseAnonKey
   };
 
   let requestBody: BodyInit | undefined;
   if (isTokenRequest) {
     headers["Content-Type"] = "application/x-www-form-urlencoded";
+    headers["Accept"] = "application/json";
     if (body && typeof body === "object" && !Array.isArray(body)) {
       const form = new URLSearchParams();
       for (const [key, value] of Object.entries(body)) {
@@ -55,6 +55,7 @@ export async function supabaseAuth(
     }
   } else {
     headers["Content-Type"] = "application/json";
+    headers["Authorization"] = `Bearer ${supabaseAnonKey}`;
     requestBody = JSON.stringify(body);
   }
 
