@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 
 type AuthMode = "signup" | "login" | "forgot" | "reset";
@@ -54,6 +54,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
 
       const response = await fetch(endpointMap[mode], {
         method: "POST",
+        credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
@@ -100,6 +101,7 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     try {
       const response = await fetch("/api/auth/resend-verification", {
         method: "POST",
+        credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: emailValue })
       });
@@ -116,8 +118,13 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
     }
   }
 
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await onSubmit(new FormData(event.currentTarget));
+  }
+
   return (
-    <form action={onSubmit} className="surface-card mx-auto w-full max-w-md space-y-4 p-6">
+    <form onSubmit={handleSubmit} className="surface-card mx-auto w-full max-w-md space-y-4 p-6">
       <input
         name="email"
         type="email"

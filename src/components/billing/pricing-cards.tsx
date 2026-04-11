@@ -54,7 +54,7 @@ export function PricingCards() {
 
   useEffect(() => {
     async function fetchSession() {
-      const res = await fetch("/api/auth/session");
+      const res = await fetch("/api/auth/session", { credentials: "same-origin" });
       const data = await res.json();
 
       if (!res.ok || !data?.authenticated || !data?.user?.id) {
@@ -89,6 +89,7 @@ export function PricingCards() {
     const endpoint = provider === "stripe" ? "/api/subscription/create" : "/api/subscription/flutterwave/initiate";
     const res = await fetch(endpoint, {
       method: "POST",
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: userId,

@@ -51,7 +51,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     async function loadSessionAndBusiness() {
-      const sessionResponse = await fetch("/api/auth/session");
+      const sessionResponse = await fetch("/api/auth/session", { credentials: "same-origin" });
       const sessionData = await sessionResponse.json();
 
       const resolvedUserId = typeof sessionData?.user?.id === "string" ? sessionData.user.id : "";
@@ -63,7 +63,7 @@ export default function DashboardPage() {
 
       setUserId(resolvedUserId);
 
-      const response = await fetch("/api/business/me");
+      const response = await fetch("/api/business/me", { credentials: "same-origin" });
       const data = await response.json();
 
       if (response.ok && data?.page?.id) {
@@ -81,6 +81,7 @@ export default function DashboardPage() {
 
   async function loadExistingBusiness() {
     const response = await fetch("/api/business/me", {
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" }
     });
     const data = await response.json();
@@ -107,6 +108,7 @@ export default function DashboardPage() {
 
     const response = await fetch(target, {
       method: "POST",
+      credentials: "same-origin",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
