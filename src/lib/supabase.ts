@@ -30,42 +30,50 @@ export async function supabaseRest(table: string, options: RequestOptions = {}) 
 }
 
 export async function supabaseAuth(
-  path: "signup" | "token",
+  path: "signup",
   body: unknown,
   queryParams?: Record<string, string>
 ) {
   const query = queryParams ? `?${new URLSearchParams(queryParams).toString()}` : "";
-  const isTokenRequest = path === "token";
   const headers: Record<string, string> = {
-    apikey: supabaseAnonKey
+    "Content-Type": "application/json",
+    apikey: supabaseAnonKey,
+    Authorization: `Bearer ${supabaseAnonKey}`
   };
-
-  let requestBody: BodyInit | undefined;
-  if (isTokenRequest) {
-    headers["Content-Type"] = "application/x-www-form-urlencoded";
-    headers["Accept"] = "application/json";
-    if (body && typeof body === "object" && !Array.isArray(body)) {
-      const form = new URLSearchParams();
-      for (const [key, value] of Object.entries(body)) {
-        if (value !== undefined && value !== null) {
-          form.append(key, String(value));
-        }
-      }
-      requestBody = form.toString();
-    }
-  } else {
-    headers["Content-Type"] = "application/json";
-    headers["Authorization"] = `Bearer ${supabaseAnonKey}`;
-    requestBody = JSON.stringify(body);
-  }
 
   const response = await fetch(`${supabaseUrl}/auth/v1/${path}${query}`, {
     method: "POST",
     headers,
-    body: requestBody
+    body: JSON.stringify(body)
   });
 
   const data = await response.json().catch(() => null);
+  return { ok: response.ok, status: response.status, data };
+}
+
+export async function supabaseTokenLogin(email: string, password: string) {
+  const body = `grant_type=password&email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`;
+
+  const response = await fetch(`${supabaseUrl}/auth/v1/token`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Accept": "application/json",
+      apikey: supabaseAnonKey
+    },
+    body
+  });
+
+  const data = await response.json().catch(() => null);
+  if (!response.ok) {
+    console.error("Supabase token login failed", {
+      status: response.status,
+      headers: response.headers.get("content-type"),
+      body,
+      data
+    });
+  }
+
   return { ok: response.ok, status: response.status, data };
 }
 
