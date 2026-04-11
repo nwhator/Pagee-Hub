@@ -68,9 +68,31 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Supabase is not configured" }, { status: 503 });
   }
 
-  const payload = await request.json();
-  const email = typeof payload?.email === "string" ? payload.email.trim() : "";
-  const password = typeof payload?.password === "string" ? payload.password : "";
+  const rawBody = await request.text();
+  if (!rawBody) {
+    console.error("Login request body is empty");
+    return NextResponse.json(
+      { error: "Request body is empty", details: { rawBody } },
+      { status: 400 }
+    );
+  }
+
+  let payload: Record<string, unknown> = {};
+  try {
+    payload = JSON.parse(rawBody) as Record<string, unknown>;
+  } catch (error) {
+    console.error("Login request JSON parse failed", rawBody, error);
+    return NextResponse.json(
+      {
+        error: "Invalid JSON request body",
+        details: { rawBody, message: error instanceof Error ? error.message : String(error) }
+      },
+      { status: 400 }
+    );
+  }
+
+  const email = typeof payload.email === "string" ? payload.email.trim() : "";
+  const password = typeof payload.password === "string" ? payload.password : "";
 
   if (!email.includes("@")) {
     return NextResponse.json({ error: "Invalid email" }, { status: 400 });
@@ -80,11 +102,11 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Password is required" }, { status: 400 });
   }
 
-  const result = await supabaseAuth("token", {
-    email,
-    password,
-    grant_type: "password"
-  });
+  const result = await supabaseAuth(
+    "token",
+    { email, password },
+    { grant_type: "password" }
+  );
   if (!result.ok) {
     const authError = getAuthErrorDetails(result.data);
     const status = result.status >= 500 ? result.status : authError.status;
