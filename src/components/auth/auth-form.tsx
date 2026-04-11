@@ -166,10 +166,6 @@ export function AuthForm({ mode }: { mode: AuthMode }) {
         {loading ? "Please wait..." : mode === "signup" ? "Create Account" : mode === "login" ? "Sign In" : mode === "forgot" ? "Send Reset Link" : "Update Password"}
       </button>
       {message ? <p className="text-sm font-semibold text-slate-700">{message}</p> : null}
-      <div className="grid grid-cols-2 gap-3 pt-1 text-sm">
-        <button type="button" className="rounded-xl bg-slate-100 py-3 font-semibold">Google</button>
-        <button type="button" className="rounded-xl bg-slate-100 py-3 font-semibold">Facebook</button>
-      </div>
     </form>
   );
 }
