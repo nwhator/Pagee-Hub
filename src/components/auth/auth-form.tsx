@@ -17,6 +17,11 @@ function toErrorMessage(input: unknown) {
     if (typeof value.msg === "string") return value.msg;
     if (typeof value.error === "string") return value.error;
     if (typeof value.error_description === "string") return value.error_description;
+    try {
+      return JSON.stringify(value, null, 2);
+    } catch {
+      return "Unable to complete request.";
+    }
   }
 
   return "Unable to complete request.";

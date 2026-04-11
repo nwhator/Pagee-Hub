@@ -81,7 +81,11 @@ export async function POST(request: Request) {
   if (!result.ok) {
     const authError = getAuthErrorDetails(result.data);
     const status = result.status >= 500 ? result.status : authError.status;
-    return NextResponse.json({ error: authError.message }, { status });
+    console.error("Supabase login failed", { status: result.status, data: result.data });
+    return NextResponse.json(
+      { error: authError.message, details: result.data },
+      { status }
+    );
   }
 
   const synced = await ensureUserProfile({
